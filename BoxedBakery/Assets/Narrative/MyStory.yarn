@@ -1,0 +1,33 @@
+﻿title: MyStory
+tags:
+position: -224,-117
+---
+===
+title: Start
+tags:
+---
+Oh, hello welcome!
+    -> Can I get you anything?
+        Rea: Bax it's me. Rea. *chuckles*
+        -> Oh.
+        Rea: I know my new collar changes my apperance so much. 
+        -> Yeah, sorry it through me off. 
+            <<jump Oh>>
+        -> Sorry Rea, I'm antsy for my first -real- customer is all. 
+             <<jump FirstOrder>>
+                
+===
+
+title: Oh
+position: 81,-111
+---
+Can I get the regular?
+ <<PackingView EventSystem>>
+===
+
+title: FirstOrder
+position: 82,81
+---
+Rea: Get to packing my regular order Bax! 
+<<PackingView EventSystem>>
+===

@@ -1,0 +1,63 @@
+title: Party
+position: -126,-43
+---
+<<declare $partyHats = 0>>
+Partygoer A: We're having a party!
+Partygoer B: Yeah, we are!
+Partygoer A: Want a party hat?
+    -> Yes, please!
+        <<set $partyHats = $partyHats + 1>>
+        Partygoer A: Here you go!
+        Partygoer B: Look over here!
+            <<jump OverHere>>
+    -> No, thanks. I despise happiness. I relish misery.
+        Partygoer A: We see that.
+        Partygoer B: Why don't you go over there?
+            <<jump OverThere>>
+    -> I'd rather go over here...
+        <<jump OverThere>>
+===
+
+title: OverHere
+position: -156,-277
+group: spaces
+---
+Partygoer C: Oh hi. Can I borrow a party hat? 
+Partygoer C: I lost mine.
+<<if $partyHats > 0>>
+    Partygoer C: Looks like you can spare a hat.
+        -> Sure, here you go.
+            <<set $partyHats = $partyHats - 1>>
+            <<jump OverThere>>
+        -> No. Never. Absolutely not.
+            <<jump OverThere>>
+<<else>>
+    Partygoer C: Oh, you don't have any to spare.
+    Partygoer C: Cya around, I guess.
+    <<jump Party>>
+<<endif>>
+===
+
+title: OverThere
+color: blue
+position: 157,-294
+group: spaces
+---
+Partygoer D: Hi!
+<<if $partyHats > 0 and $partyHats <= 2>>
+    Partygoer D: You're definitely fun.
+        -> Why?
+            Partygoer D: You like party hats.
+                -> Thanks! You're fun too.
+                    <<jump Party>>
+<<elseif $partyHats > 2>>
+    Partygoer D: You have too many hats!
+    Partygoer D: It really scares me.
+        -> Sorry...
+            <<jump Party>>
+<<else>>
+    Partygoer D: You should go party somewhere else in this party.
+        -> Oh, bye, then...
+            <<jump Party>>
+<<endif>>
+===
