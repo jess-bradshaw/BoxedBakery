@@ -26,25 +26,25 @@ public class TutorialLevel : MonoBehaviour
         if(CenterSpot.CompareTag("DropInvalid"))
         {
             item= filledSpot.item;  
-            Debug.Log(item); 
+            //Debug.Log(item); 
              
             if(item == "Strawberry")
             {
                 continueButton.SetActive(true); 
                 Coins.SetActive(true); 
-                Debug.Log("we did it!"); 
+               // Debug.Log("we did it!"); 
             }
             else 
             {
               if(itemChecked == false)
               {
               dialogueRunner.StartDialogue(conversationStartNode); 
-                 Debug.Log("BAX YOU KNOW BETTER"); 
+                // Debug.Log("BAX YOU KNOW BETTER"); 
                  itemChecked = true;
               }
               else 
               {
-                Debug.Log("We skipping"); 
+                //Debug.Log("We skipping"); 
               }
             }
         }
