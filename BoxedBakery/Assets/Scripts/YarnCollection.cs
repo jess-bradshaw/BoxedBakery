@@ -6,6 +6,7 @@ using Yarn.Unity;
 [RequireComponent(typeof(CanvasGroup))]
 public class YarnCollection : MonoBehaviour
 {
+    //Cameras
     public GameObject CustomerCamera;
     public GameObject PackingCamera;
     public GameObject CustomerOrder; 
@@ -14,10 +15,15 @@ public class YarnCollection : MonoBehaviour
 
     public InMemoryVariableStorage variableStorage;
 
+//fade in and out 
     public CanvasGroup canvasGroup; 
     public bool FadeIn;
     public bool FadeOut; 
    [SerializeField] bool startFadedOut = false;
+//Characters 
+    public GameObject ReaVisual; 
+    public bool ReaEnabled; 
+
     // Update is called once per frame
     void Update()
     {
@@ -27,6 +33,8 @@ public class YarnCollection : MonoBehaviour
        //Camera fading 
         variableStorage.SetValue("$FadeIn", FadeIn); 
         variableStorage.SetValue("$FadeOut", FadeOut); 
+        //Characters 
+        variableStorage.SetValue("$ReaEnabled", ReaEnabled); 
     }
 
 //Camera Changing Commands 
@@ -45,7 +53,7 @@ public class YarnCollection : MonoBehaviour
         PackingCamera.SetActive(false);
         CustomerOrder.SetActive(false);
     }
-//Fades Commands 
+  //Fades Commands 
     [YarnCommand("FadeIn")]
     public IEnumerator FadeInTransition ()
     {
@@ -75,6 +83,14 @@ public class YarnCollection : MonoBehaviour
         }
         canvasGroup.alpha = to;
         Debug.Log("We faded?"); 
+    }
+
+    //Character Enabling 
+    [YarnCommand("ReaEnabled")]
+    public void EnableRea()
+    {
+        ReaVisual.SetActive(true);
+        Debug.Log("We called it to enable"); 
     }
     
 }

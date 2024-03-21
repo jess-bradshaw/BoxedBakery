@@ -23,7 +23,9 @@ position: -266,-153
     <<PackingView EventSystem>>
     <<wait 1>>
     <<jump TestingPacking>>
-*You look up to see a mess of blonde hair.* 
+<<ReaEnabled EventSystem>>
+<i>You look up to see a mess of blonde hair.</i>
+
 Baxter: Oh hey Rea. 
 -> Can I get you anything?
     Rea: Sure, but maybe rephrase that as what can I get you.. you know get the customer talking. 
@@ -40,7 +42,7 @@ Baxter: Oh hey Rea.
          //Add in tracking value for Rea's emotion? Or at least how she will repond if you get it wrong. 
     -> Baxter: Oh sorry, I'm anxious about today.
         Rea: It's okay, that's why I wanted to visit before it got busy. You got this, plus you can get your first customer out of the way. 
-        *She winked before the two of you break into soft chuckles. Just want you needed.* 
+        <i>She winked before the two of you break into soft chuckles. Just want you needed.</i> 
         <<jump Day1Smirk>>
 -> ... 
     <<jump Day1Ignore>>
@@ -51,24 +53,26 @@ Baxter: Oh hey Rea.
 title: Day1Smirk
 position: 83,-201
 ---
-*You smirk flashing your classic lopsided smile.* 
+<i>You smirk flashing your classic lopsided smile.</i> 
 Baxter: What can I get boxed up for you lass? 
 Rea: Much better! The regular please. 
-*You scribble her order on your note pad then get to packing up her favourite cupcake.* 
+<i>You scribble her order on your note pad then get to packing up her favourite cupcake.</i> 
 <<FadeOut EventSystem>>
 <<PackingView EventSystem>>
+<<wait 1>>
+<<jump TestingPacking>>
     //Add in tracking value for if it was a nice interaction.
 ===
 
 title: Day1Ignore
 position: -50,41
 ---
-//<<place Rea rightCustomer>>
-//<<pose Rea armsCrossed>>
-//<<expression Rea concerned>>
-*Rea moves off to the side watching you with worry etched across her face. You don't bother writing her order down.* 
-//<<fadeOut>>
+
+<i>Rea moves off to the side watching you with worry etched across her face. You don't bother writing her order down.</i>
+<<FadeOut EventSystem>>
 <<PackingView EventSystem>>
+<<wait 1>>
+<<jump TestingPacking>>
 //Add in tracking value for that it was a not nice interaction. 
 ===
 
@@ -76,12 +80,12 @@ title: Day1ReaOrder
 ---
 //<<camera Customer>>
 <<FadeIn EventSystem>>
-*you slide the package over and collect the coins 
+<i>you slide the package over and collect the coins </i>
 <<if $Rea_Concerned > 0>>
     Rea: Umm thanks Bax, I.. hope your day goes smoothly
-    *She looks at the box her nose wrinkled up but collects then heads out* 
+    <i>She looks at the box her nose wrinkled up but collects then heads out</i> 
     Rea: Keep it. I was just trying to help but it seems you can't even remember your best friend's order.
-    **she storms out of the shop the door banging as she leaves.** 
+    <i>she storms out of the shop the door banging as she leaves.</i> 
     Baxter: Oh.. 
         -> I didn't need her storming in here anyways. 
         -> I need a moment. 
@@ -95,11 +99,16 @@ title: Day1ReaOrder
     Baxter: We will see but thanks I think getting that first order out of the way helped. 
     Rea: One of many today, I'm sure of it. Now excuse me while I go shove this in my face and good luck - not that you need it! 
     Baxter: Thank again for checking on me bestie. I'll call you later with all the details. 
-    *Rea heads out, you know she won't wait till she gets home to eat the cupcake. Your hands relax having gone through the motions of one customer. Today will be good.* 
+    <i>Rea heads out, you know she won't wait till she gets home to eat the cupcake. Your hands relax having gone through the motions of one customer. Today will be good.</i> 
 <<endif>>
 ===
 
 title: TestingPacking
 ---
 <<FadeIn EventSystem>>
+===
+
+title: BaxKnowsBetter
+---
+Rea: Umm Bax, you know my fav is strawberry right?
 ===
