@@ -15,6 +15,10 @@ public class TutorialLevel : MonoBehaviour
     public string item; 
     public DialogueRunner dialogueRunner;
     public bool itemChecked; 
+    public YarnCollection storyVars;
+    public GameObject tip;
+    public GameObject bigTip; 
+    public int money; 
 
     // Update is called once per frame
    void Start()
@@ -32,7 +36,14 @@ public class TutorialLevel : MonoBehaviour
             {
                 continueButton.SetActive(true); 
                 Coins.SetActive(true); 
-               // Debug.Log("we did it!"); 
+                if (storyVars.Tip== true)
+                { 
+                    tip.SetActive(true); 
+                }
+                 if (storyVars.BigTip== true)
+                { 
+                    bigTip.SetActive(true); 
+                }
             }
             else 
             {
@@ -44,6 +55,8 @@ public class TutorialLevel : MonoBehaviour
               }
               else 
               {
+               continueButton.SetActive(true); 
+               Coins.SetActive(true); 
                 //Debug.Log("We skipping"); 
               }
             }

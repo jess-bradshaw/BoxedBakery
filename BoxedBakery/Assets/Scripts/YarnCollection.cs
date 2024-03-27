@@ -23,6 +23,11 @@ public class YarnCollection : MonoBehaviour
 //Characters 
     public GameObject ReaVisual; 
     public bool ReaEnabled; 
+//Tipping
+    public bool ReaTip; 
+    public bool Tip; 
+    public bool ReaBigTip; 
+    public bool BigTip; 
 
     // Update is called once per frame
     void Update()
@@ -35,6 +40,9 @@ public class YarnCollection : MonoBehaviour
         variableStorage.SetValue("$FadeOut", FadeOut); 
         //Characters 
         variableStorage.SetValue("$ReaEnabled", ReaEnabled); 
+        //tipping
+        variableStorage.SetValue("$ReaTip", ReaTip);
+        variableStorage.SetValue("$ReaBigTip", ReaBigTip);  
     }
 
 //Camera Changing Commands 
@@ -92,5 +100,19 @@ public class YarnCollection : MonoBehaviour
         ReaVisual.SetActive(true);
         Debug.Log("We called it to enable"); 
     }
-    
+
+    [YarnCommand("ReaTip")]
+    public void ReaTipped()
+    {
+       
+        Debug.Log("Rea tipped"); 
+        Tip = true; 
+    }
+     [YarnCommand("ReaBigTip")]
+    public void ReaTippedBig()
+    {
+       
+        Debug.Log("Rea tipped BIG"); 
+        BigTip = true; 
+    }
 }

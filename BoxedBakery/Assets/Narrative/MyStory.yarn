@@ -21,6 +21,8 @@ position: -266,-153
 -> Testing Option
     <<FadeOut EventSystem>>
     <<PackingView EventSystem>>
+    <<ReaTip EventSystem>>
+     <<ReaBigTip EventSystem>>
     <<wait 1>>
     <<jump TestingPacking>>
 <<ReaEnabled EventSystem>>
