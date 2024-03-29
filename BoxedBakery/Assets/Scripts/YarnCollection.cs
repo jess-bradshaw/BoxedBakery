@@ -19,10 +19,14 @@ public class YarnCollection : MonoBehaviour
     public CanvasGroup canvasGroup; 
     public bool FadeIn;
     public bool FadeOut; 
-   [SerializeField] bool startFadedOut = false;
+   //[SerializeField] bool startFadedOut = false;
 //Characters 
     public GameObject ReaVisual; 
+    public GameObject ReaOrder; 
     public bool ReaEnabled; 
+    public GameObject BusyVisual; 
+    public GameObject BusyOrder; 
+    public bool BusyEnabled; 
 //Tipping
     public bool ReaTip; 
     public bool Tip; 
@@ -40,6 +44,10 @@ public class YarnCollection : MonoBehaviour
         variableStorage.SetValue("$FadeOut", FadeOut); 
         //Characters 
         variableStorage.SetValue("$ReaEnabled", ReaEnabled); 
+        variableStorage.SetValue("$ReaOrder", ReaOrder); 
+
+        variableStorage.SetValue("$BusyEnabled", BusyEnabled); 
+        variableStorage.SetValue("$BusyOrder", BusyOrder); 
         //tipping
         variableStorage.SetValue("$ReaTip", ReaTip);
         variableStorage.SetValue("$ReaBigTip", ReaBigTip);  
@@ -51,7 +59,6 @@ public class YarnCollection : MonoBehaviour
     {
         PackingCamera.SetActive(true);
         CustomerCamera.SetActive(false);
-        CustomerOrder.SetActive(true);
     }
     
     [YarnCommand("CustomerView")]
@@ -59,7 +66,8 @@ public class YarnCollection : MonoBehaviour
     {
         CustomerCamera.SetActive(true);
         PackingCamera.SetActive(false);
-        CustomerOrder.SetActive(false);
+        ReaOrder.SetActive(false);
+        ReaVisual.SetActive(false);
     }
   //Fades Commands 
     [YarnCommand("FadeIn")]
@@ -90,7 +98,7 @@ public class YarnCollection : MonoBehaviour
             elapsed += Time.deltaTime;
         }
         canvasGroup.alpha = to;
-        Debug.Log("We faded?"); 
+        //Debug.Log("We faded?"); 
     }
 
     //Character Enabling 
@@ -98,9 +106,14 @@ public class YarnCollection : MonoBehaviour
     public void EnableRea()
     {
         ReaVisual.SetActive(true);
-        Debug.Log("We called it to enable"); 
+        //Debug.Log("We called it to enable"); 
     }
-
+    [YarnCommand("ReaOrder")]
+    public void DisplayReaOrder()
+    {
+        ReaOrder.SetActive(true);
+        //Debug.Log("We called it to enable"); 
+    }
     [YarnCommand("ReaTip")]
     public void ReaTipped()
     {
@@ -115,4 +128,21 @@ public class YarnCollection : MonoBehaviour
         Debug.Log("Rea tipped BIG"); 
         BigTip = true; 
     }
+[YarnCommand("BusyEnabled")]
+    public void EnableBusy()
+    {
+        BusyVisual.SetActive(true);
+        //Debug.Log("We called it to enable"); 
+    }
+    [YarnCommand("BusyOrder")]
+    public void DisplayBusyOrder()
+    {
+        BusyOrder.SetActive(true);
+        //Debug.Log("We called it to enable"); 
+    }
+
+
+
+
+
 }

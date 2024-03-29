@@ -22,7 +22,7 @@ position: -266,-153
     <<FadeOut EventSystem>>
     <<PackingView EventSystem>>
     <<ReaTip EventSystem>>
-     <<ReaBigTip EventSystem>>
+     
     <<wait 1>>
     <<jump TestingPacking>>
 <<ReaEnabled EventSystem>>
@@ -33,7 +33,7 @@ Baxter: Oh hey Rea.
     Rea: Sure, but maybe rephrase that as what can I get you.. you know get the customer talking. 
     Baxter: Aye, you're right.. I'm too in my head is all. It's not like I haven't worked at a shop before but it feels different. 
     Rea: It is different. This is -your- place, just don't put so much pressure on yourself. Smile, wink, you know be you. It'll be fineee. 
-    <<jump Day1Smirk>>
+    <<jump Day1Smirk>> <<ReaTip EventSystem>>
 -> Move you are blocking the door what if a customer comes in?
     Rea: Bax.. you doing okay? I get that today is stressful but even for you that seemed harsh.
     -> Baxter: Yeah.. fine. Whatever just move. 
@@ -41,15 +41,12 @@ Baxter: Oh hey Rea.
         Baxter: Fine. Just move. 
         <<set $Rea_Angry += 1>> 
         <<jump Day1Ignore>>
-         //Add in tracking value for Rea's emotion? Or at least how she will repond if you get it wrong. 
     -> Baxter: Oh sorry, I'm anxious about today.
         Rea: It's okay, that's why I wanted to visit before it got busy. You got this, plus you can get your first customer out of the way. 
         <i>She winked before the two of you break into soft chuckles. Just want you needed.</i> 
         <<jump Day1Smirk>>
 -> ... 
     <<jump Day1Ignore>>
-    <<set $Rea_Concerned +=1>>
-    // Add in tracking value for rea's emotion? Or at least how she will repond if you get it wrong. 
 ===
 
 title: Day1Smirk
@@ -59,50 +56,24 @@ position: 83,-201
 Baxter: What can I get boxed up for you lass? 
 Rea: Much better! The regular please. 
 <i>You scribble her order on your note pad then get to packing up her favourite cupcake.</i> 
+<<ReaBigTip EventSystem>>
 <<FadeOut EventSystem>>
 <<PackingView EventSystem>>
+<<ReaOrder EventSystem>>
 <<wait 1>>
 <<jump TestingPacking>>
-    //Add in tracking value for if it was a nice interaction.
 ===
 
 title: Day1Ignore
 position: -50,41
 ---
-
-<i>Rea moves off to the side watching you with worry etched across her face. You don't bother writing her order down.</i>
+//Add in movement for Rea to the side
+<i>Rea watches you with worry etched across her face. You don't bother writing her order down.</i>
 <<FadeOut EventSystem>>
 <<PackingView EventSystem>>
 <<wait 1>>
 <<jump TestingPacking>>
 //Add in tracking value for that it was a not nice interaction. 
-===
-
-title: Day1ReaOrder
----
-//<<camera Customer>>
-<<FadeIn EventSystem>>
-<i>you slide the package over and collect the coins </i>
-<<if $Rea_Concerned > 0>>
-    Rea: Umm thanks Bax, I.. hope your day goes smoothly
-    <i>She looks at the box her nose wrinkled up but collects then heads out</i> 
-    Rea: Keep it. I was just trying to help but it seems you can't even remember your best friend's order.
-    <i>she storms out of the shop the door banging as she leaves.</i> 
-    Baxter: Oh.. 
-        -> I didn't need her storming in here anyways. 
-        -> I need a moment. 
-            Baxter: I feel bad. I know she was trying to help, maybe I am more stressed out about today. I wonder if I should call her later?
-                -> Yeah I will. 
-                // track that he will call. 
-                -> Nah, she will be fine. 
-    Baxter: Well I should put that back before someone else comes in. 
-<<else>>
-    Rea: Thanks Bax. You are going to great today, I promise. 
-    Baxter: We will see but thanks I think getting that first order out of the way helped. 
-    Rea: One of many today, I'm sure of it. Now excuse me while I go shove this in my face and good luck - not that you need it! 
-    Baxter: Thank again for checking on me bestie. I'll call you later with all the details. 
-    <i>Rea heads out, you know she won't wait till she gets home to eat the cupcake. Your hands relax having gone through the motions of one customer. Today will be good.</i> 
-<<endif>>
 ===
 
 title: TestingPacking
@@ -113,4 +84,66 @@ title: TestingPacking
 title: BaxKnowsBetter
 ---
 Rea: Umm Bax, you know my fav is strawberry right?
+===
+
+title: Day1ReaOrderRight
+---
+<i> You smile looking down at your best friends favourite snack, first order complete. You slide it over glancing back up</i>
+<<FadeOut EventSystem>>
+<<CustomerView EventSystem>>
+<<ReaEnabled EventSystem>>
+<<wait 1>>
+<<FadeIn EventSystem>>
+Rea: Thanks Bax! I hope today goes well, you got this! 
+Baxter: Thanks Rea, really appreciate it. Call me later alright? 
+Rea: Course, later! 
+<<FadeOut EventSystem>>
+<<CustomerView EventSystem>>
+<<FadeIn EventSystem>>
+<i> She waltz out of the shop closing the door behind her. You know that cupcake has no chance of surviving the trip back to her home.</i>
+<i> It was good to get that first order out of the way, now it's just waiting for more to roll in. Speaking of, the door snaps open and a flurry of noise comes in. </i>
+<<jump Day1Business>>
+===
+
+title: Day1ReaOrderWrong
+---
+<i> You sigh, does this even really count as an order? You slide it over glancing back up</i>
+<<FadeOut EventSystem>>
+<<CustomerView EventSystem>>
+<<ReaEnabled EventSystem>>
+<<wait 1>>
+<<FadeIn EventSystem>>
+<<if $Rea_Angry > 0>>
+    Rea: Keep it. I was just trying to help but it seems you can't even remember your best friend's order.
+     <<FadeOut EventSystem>>
+    <<CustomerView EventSystem>>
+    <<FadeIn EventSystem>>
+    <i>she storms out of the shop the door banging as she leaves.</i>
+    Baxter: Oh.. 
+        -> I didn't need her storming in here anyways. 
+        -> I need a moment. 
+            Baxter: I feel bad. I know she was trying to help, maybe I am more stressed out about today. I wonder if I should call her later?
+                -> Yeah I will. 
+                // track that he will call. 
+                -> Nah, she will be fine. 
+    Baxter: Well I should put that back before someone else comes in. 
+<<else>>
+    <i> Rea scrunches her nose at the box then looks up at you with round eyes. </i>
+    Rea: Umm thanks Bax, I.. hope your day goes smoothly. S-sorry if me stopping in caused stress. Good luck today.
+    Baxter: ...  
+    <<FadeOut EventSystem>>
+    <<CustomerView EventSystem>>
+    <<FadeIn EventSystem>>
+<<endif>>
+<<jump Day1Business>>
+===
+title: Day1Business
+---
+<i> The loud voice booming into a phone held infront of their face as the figure walks up gesturing at things.</i>
+<<BusyEnabled EventSystem>>
+???: No that won't work, we can't move the deadline they have to have it in before then. No.. No. I can't. No. Stop. I said NO.
+Baxter: Welcome-
+???: Shhh. No time for that. 
+-> <i>Wave then try to talk again </i> 
+-> "Hello welcome"
 ===
