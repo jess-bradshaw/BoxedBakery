@@ -488,6 +488,18 @@ MonoBehaviour:
   - Desktop/Master
   - BoxedBakery_Data/StreamingAssets/Desktop/Master
   - BoxedBakery_Data/StreamingAssets/BoxedBakery_Data/StreamingAssets/Desktop/Master
+  - Old Build/Desktop/Master
+  - Old Build/BoxedBakery_Data/StreamingAssets/Desktop/Master
+  - Old Build/BoxedBakery_Data/StreamingAssets/BoxedBakery_Data/StreamingAssets/Desktop/Master
+  - BoxedBakery_Data/StreamingAssets/BoxedBakery_Data/StreamingAssets/BoxedBakery_Data/StreamingAssets/Desktop/Master
+  - BoxedBakery_Data/StreamingAssets/Old Build/Desktop/Master
+  - BoxedBakery_Data/StreamingAssets/Old Build/BoxedBakery_Data/StreamingAssets/Desktop/Master
+  - BoxedBakery_Data/StreamingAssets/Old Build/BoxedBakery_Data/StreamingAssets/BoxedBakery_Data/StreamingAssets/Desktop/Master
+  - BoxedBakery_Data/StreamingAssets/BoxedBakery_Data/StreamingAssets/BoxedBakery_Data/StreamingAssets/BoxedBakery_Data/StreamingAssets/Desktop/Master
+  - BoxedBakery_Data/StreamingAssets/BoxedBakery_Data/StreamingAssets/Old Build/Desktop/Master
+  - BoxedBakery_Data/StreamingAssets/BoxedBakery_Data/StreamingAssets/Old Build/BoxedBakery_Data/StreamingAssets/Desktop/Master
+  - BoxedBakery_Data/StreamingAssets/BoxedBakery_Data/StreamingAssets/Old Build/BoxedBakery_Data/StreamingAssets/BoxedBakery_Data/StreamingAssets/Desktop/Master
+  - BoxedBakery_Data/StreamingAssets/BoxedBakery_Data/StreamingAssets/BoxedBakery_Data/StreamingAssets/BoxedBakery_Data/StreamingAssets/BoxedBakery_Data/StreamingAssets/Desktop/Master
   Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264
