@@ -8,7 +8,6 @@ title: Start
 tags:
 position: -266,-153
 ---
-//<<place Rea CenterCustomer>>
 <<FadeIn EventSystem>>
 <i>You hear the door creek open as you are busy tidying up the front counter.</i>
 -> Oh, hello w-welcome!
@@ -17,36 +16,36 @@ position: -266,-153
     ???: Clear, warm, and an open ended question.. seems you have been studying. 
 -> ... 
     ???: Bax.. you might want to greet customers. Not sure it's a great first impression. 
-//EDIT THIS OUT LATER
+//EDIT THIS OUT LATER --------------------------
 -> Testing Option
     <<FadeOut EventSystem>>
     <<PackingView EventSystem>>
-    <<ReaTip EventSystem>>
-     
     <<wait 1>>
     <<jump TestingPacking>>
-<<ReaEnabled EventSystem>>
+<<ReaEnabled EventSystem>> //First time Rea is on screen. 
 <i>You look up to see a mess of blonde hair.</i>
-
 Baxter: Oh hey Rea. 
 -> Can I get you anything?
     Rea: Sure, but maybe rephrase that as what can I get you.. you know get the customer talking. 
-    Baxter: Aye, you're right.. I'm too in my head is all. It's not like I haven't worked at a shop before but it feels different. 
-    Rea: It is different. This is -your- place, just don't put so much pressure on yourself. Smile, wink, you know be you. It'll be fineee. 
+    Baxter: Aye, you're right.. I'm too in my head is all. 
+    Baxter: It's not like I haven't worked at a shop before but it feels different. 
+    Rea: It is different. This is -your- place, just don't put so much pressure on yourself. 
+    Rea: Smile, wink, you know... be you. It'll be fineee. 
     <<jump Day1Smirk>> <<ReaTip EventSystem>>
 -> Move you are blocking the door what if a customer comes in?
     Rea: Bax.. you doing okay? I get that today is stressful but even for you that seemed harsh.
     -> Baxter: Yeah.. fine. Whatever just move. 
-        Rea: Umm okay. Can I get a strawberry cupcake? 
+        Rea: Umm okay. Can I get a strawberry cupcake? //She tells him but he doesn't write down the order. 
         Baxter: Fine. Just move. 
         <<set $Rea_Angry += 1>> 
         <<jump Day1Ignore>>
     -> Baxter: Oh sorry, I'm anxious about today.
-        Rea: It's okay, that's why I wanted to visit before it got busy. You got this, plus you can get your first customer out of the way. 
+        Rea: It's okay, that's why I wanted to visit before it got busy. 
+        Rea: You got this, plus you can get your first customer out of the way. 
         <i>She winked before the two of you break into soft chuckles. Just want you needed.</i> 
         <<jump Day1Smirk>>
 -> ... 
-    <<jump Day1Ignore>>
+    <<jump Day1Ignore>> // gets no info because you dont ask. 
 ===
 
 title: Day1Smirk
@@ -67,13 +66,11 @@ Rea: Much better! The regular please.
 title: Day1Ignore
 position: -50,41
 ---
-//Add in movement for Rea to the side
 <i>Rea watches you with worry etched across her face. You don't bother writing her order down.</i>
 <<FadeOut EventSystem>>
 <<PackingView EventSystem>>
 <<wait 1>>
 <<jump TestingPacking>>
-//Add in tracking value for that it was a not nice interaction. 
 ===
 
 title: TestingPacking
@@ -83,7 +80,11 @@ title: TestingPacking
 
 title: BaxKnowsBetter
 ---
-Rea: Umm Bax, you know my fav is strawberry right?
+<<if $Rea_Angry > 0>>
+    Rea: That isn't.. nevermind. 
+<<else>>
+    Rea: Umm Bax, my regular is a bit more colourful.. 
+<<endif>>
 ===
 
 title: Day1ReaOrderRight
@@ -94,9 +95,17 @@ title: Day1ReaOrderRight
 <<ReaEnabled EventSystem>>
 <<wait 1>>
 <<FadeIn EventSystem>>
-Rea: Thanks Bax! I hope today goes well, you got this! 
-Baxter: Thanks Rea, really appreciate it. Call me later alright? 
-Rea: Course, later! 
+<<if $Rea_Angry > 0>>
+    Rea: Thanks Bax, I hope I didn't throw you off coming in. 
+    Baxter: Thanks Rea, sorry about earlier.
+    Rea: It's okay, deep breath you got this. Call me later if you want. 
+    //Track that Bax can call her
+<<else>>
+    Rea: Thanks Bax! I hope today goes well, you got this! 
+    Baxter: Thanks Rea, really appreciate it. Call me later alright? 
+    Rea: Course, later! 
+    //Track that Rea calls him. 
+<<endif>>
 <<FadeOut EventSystem>>
 <<CustomerView EventSystem>>
 <<FadeIn EventSystem>>
@@ -122,10 +131,8 @@ title: Day1ReaOrderWrong
     Baxter: Oh.. 
         -> I didn't need her storming in here anyways. 
         -> I need a moment. 
-            Baxter: I feel bad. I know she was trying to help, maybe I am more stressed out about today. I wonder if I should call her later?
-                -> Yeah I will. 
-                // track that he will call. 
-                -> Nah, she will be fine. 
+            Baxter: I feel bad. I know she was trying to help, maybe I am more stressed out about today. I should call her later.
+                //Track that Bax will call her. 
     Baxter: Well I should put that back before someone else comes in. 
 <<else>>
     <i> Rea scrunches her nose at the box then looks up at you with round eyes. </i>
@@ -144,6 +151,23 @@ title: Day1Business
 ???: No that won't work, we can't move the deadline they have to have it in before then. No.. No. I can't. No. Stop. I said NO.
 Baxter: Welcome-
 ???: Shhh. No time for that. 
--> <i>Wave then try to talk again </i> 
+-> <i>Wave to get their attention </i> 
+    <i> They hold up a finger as they mmhm and ahh into their phone </i>
 -> "Hello welcome"
+    ???: No sorry, say that again I couldn'hear you. 
+    <i> the person waves a hand to dismiss you.</i> 
+???: Yeah, okay. No, I'm out grabbing the team breakfast.
+Baxter: ... 
+???: Nah some new shop.. don't know yet. Mmhm. 
+<i> The hold up four fingers and then draw a circle </i> 
+???: Just put my order in- no that meeting isn't for another hour... 
+<i> That was an order? What should I do? </i>
+-> <i> Interupt themm to clarify what the order was </i>
+-> "Donuts got it"
+-> "Bagels?"
+-> "Sorry I haven't made any mini pies this morning"
+???: What? No. Ugh I don't have time for this. 
+<i> The person heads out the door. </i>
+<i> I wonder who might come in next? Find out in the full version of the game. </i> 
+<i> Press ESC to quit. </i> 
 ===

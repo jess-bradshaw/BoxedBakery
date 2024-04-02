@@ -487,6 +487,7 @@ MonoBehaviour:
   MasterBanks:
   - Desktop/Master
   - BoxedBakery_Data/StreamingAssets/Desktop/Master
+  - BoxedBakery_Data/StreamingAssets/BoxedBakery_Data/StreamingAssets/Desktop/Master
   Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264
