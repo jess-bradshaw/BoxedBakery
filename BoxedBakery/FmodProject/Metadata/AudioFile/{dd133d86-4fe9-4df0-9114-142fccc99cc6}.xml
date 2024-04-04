@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{ec370e16-0cbe-4bba-817f-2149dd592a34}">
+	<object class="AudioFile" id="{dd133d86-4fe9-4df0-9114-142fccc99cc6}">
 		<property name="assetPath">
 			<value>Click _439523__errysn__klik.ogg</value>
 		</property>
@@ -14,7 +14,7 @@
 			<value>0.26099773242630386</value>
 		</property>
 		<relationship name="masterAssetFolder">
-			<destination>{a893fd2d-a51c-40b8-82cd-773ce8f5a944}</destination>
+			<destination>{650cc0f3-d251-4c62-b163-a6f2f9153860}</destination>
 		</relationship>
 	</object>
 </objects>

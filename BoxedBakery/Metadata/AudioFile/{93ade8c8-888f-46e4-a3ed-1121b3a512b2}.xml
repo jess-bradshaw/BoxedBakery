@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{93ade8c8-888f-46e4-a3ed-1121b3a512b2}">
+		<property name="assetPath">
+			<value>Audio/SFX/drop.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.51083900226757373</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a893fd2d-a51c-40b8-82cd-773ce8f5a944}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class DragController : MonoBehaviour
 {
     public Draggable LastDragged => _lastDragged;
@@ -11,6 +12,7 @@ public class DragController : MonoBehaviour
     public float startPosX; //mouse position
     public float startPosY; //mouse position
     private Draggable _lastDragged; 
+
     //public Vector2 mousePos; 
     
     void Awake()
@@ -85,6 +87,7 @@ public class DragController : MonoBehaviour
     void Drop()
     {
         UpdateDragStatus(false);  
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.ItemDropped, this.transform.position); 
     }
 
     void UpdateDragStatus (bool isDragging)
