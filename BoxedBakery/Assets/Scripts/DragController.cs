@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class DragController : MonoBehaviour
 {
     public Draggable LastDragged => _lastDragged;

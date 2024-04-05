@@ -54,10 +54,11 @@ public class TutorialLevel : MonoBehaviour
              if (storyVars.Tip== true)
             { 
                 tip.SetActive(true); 
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.CoinTipped, this.transform.position); 
             }
             if (storyVars.BigTip== true)
             { 
-                bigTip.SetActive(true); 
+                bigTip.SetActive(true);  
             }
             PackedCheck = true; 
             continueButton.SetActive(false); 
@@ -75,6 +76,7 @@ public class TutorialLevel : MonoBehaviour
             }
             else 
             {
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.CoinPaid, this.transform.position); 
                 Coins.SetActive(true); 
                 LidClosed.SetActive(true);
                 LidOpen.SetActive(false);  

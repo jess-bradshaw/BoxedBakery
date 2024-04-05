@@ -32,6 +32,11 @@ public class YarnCollection : MonoBehaviour
     public bool Tip; 
     public bool ReaBigTip; 
     public bool BigTip; 
+//Puzzles
+    public GameObject TutorialPuzzle; 
+    public bool TutorialP;
+    public GameObject Puzzle1; 
+    public bool P1; 
 
     // Update is called once per frame
     void Update()
@@ -51,6 +56,10 @@ public class YarnCollection : MonoBehaviour
         //tipping
         variableStorage.SetValue("$ReaTip", ReaTip);
         variableStorage.SetValue("$ReaBigTip", ReaBigTip);  
+
+        //puzzles
+        variableStorage.SetValue("$TutorialPuzzle", TutorialP);
+        variableStorage.SetValue("$Puzzle1", P1);  
     }
 
 //Camera Changing Commands 
@@ -69,7 +78,7 @@ public class YarnCollection : MonoBehaviour
         ReaOrder.SetActive(false);
         ReaVisual.SetActive(false);
     }
-  //Fades Commands 
+//Fades Commands 
     [YarnCommand("FadeIn")]
     public IEnumerator FadeInTransition ()
     {
@@ -84,65 +93,62 @@ public class YarnCollection : MonoBehaviour
     public IEnumerator Fade(float from, float to, float time) 
     {
         canvasGroup.alpha = from;
-
         float elapsed = 0f;
-
         while (elapsed < time) 
         {
             var factor = elapsed / time;
             canvasGroup.alpha = Mathf.Lerp(from, to, factor);
-           // Debug.Log(canvasGroup.alpha); 
-            //Debug.Log(to+ "To value"); 
 
             yield return null;
             elapsed += Time.deltaTime;
         }
         canvasGroup.alpha = to;
-        //Debug.Log("We faded?"); 
     }
 
-    //Character Enabling 
+//Rea Character Commands
     [YarnCommand("ReaEnabled")]
     public void EnableRea()
     {
         ReaVisual.SetActive(true);
-        //Debug.Log("We called it to enable"); 
     }
     [YarnCommand("ReaOrder")]
     public void DisplayReaOrder()
     {
         ReaOrder.SetActive(true);
-        //Debug.Log("We called it to enable"); 
     }
     [YarnCommand("ReaTip")]
     public void ReaTipped()
     {
-       
         Debug.Log("Rea tipped"); 
         Tip = true; 
     }
      [YarnCommand("ReaBigTip")]
     public void ReaTippedBig()
     {
-       
         Debug.Log("Rea tipped BIG"); 
         BigTip = true; 
     }
-[YarnCommand("BusyEnabled")]
+//Business Character Commands 
+    [YarnCommand("BusyEnabled")]
     public void EnableBusy()
     {
         BusyVisual.SetActive(true);
-        //Debug.Log("We called it to enable"); 
     }
     [YarnCommand("BusyOrder")]
     public void DisplayBusyOrder()
     {
         BusyOrder.SetActive(true);
-        //Debug.Log("We called it to enable"); 
     }
-
-
-
-
-
+//Puzzle Commands 
+     [YarnCommand("TutorialPuzzle")]
+    public void DisablePuzzleT()
+    {
+        TutorialPuzzle.SetActive(false);
+        Debug.Log("We should disable puzzle"); 
+    }
+     [YarnCommand("Puzzle1")]
+    public void EnablePuzzle1()
+    {
+        Puzzle1.SetActive(true);
+    }
 }

@@ -106,6 +106,7 @@ title: Day1ReaOrderRight
     Rea: Course, later! 
     //Track that Rea calls him. 
 <<endif>>
+<<TutorialPuzzle EventSystem>>
 <<FadeOut EventSystem>>
 <<CustomerView EventSystem>>
 <<FadeIn EventSystem>>
@@ -142,8 +143,11 @@ title: Day1ReaOrderWrong
     <<CustomerView EventSystem>>
     <<FadeIn EventSystem>>
 <<endif>>
+<<TutorialPuzzle EventSystem>>
 <<jump Day1Business>>
 ===
+
+
 title: Day1Business
 ---
 <i> The loud voice booming into a phone held infront of their face as the figure walks up gesturing at things.</i>
@@ -166,8 +170,33 @@ Baxter: ...
 -> "Donuts got it"
 -> "Bagels?"
 -> "Sorry I haven't made any mini pies this morning"
-???: What? No. Ugh I don't have time for this. 
-<i> The person heads out the door. </i>
-<i> I wonder who might come in next? Find out in the full version of the game. </i> 
-<i> Press ESC to quit. </i> 
+???: ... Have Lars look into that..
+<i> You give up and attempt to back the order the best you can. </i>  
+//<i> The person heads out the door. </i>
+//<i> I wonder who might come in next? Find out in the full version of the game. </i> 
+//<i> Press ESC to quit. </i> 
+<<FadeOut EventSystem>>
+<<PackingView EventSystem>>
+<<ReaOrder EventSystem>>
+<<wait 1>>
+<<Puzzle1 EventSystem>>
+<<jump BusyPacking>>
+===
+title: BusyPacking
+---
+<<FadeIn EventSystem>>
+===
+title: BusyCorrectOrder
+---
+???: Yeah, on my way. These things look good. 
+===
+
+title: BusyIncorrectOrder
+---
+???: Ugh, nah the shop messed it up. Won't be coming back here. 
+===
+
+title: BusyTooBusy
+---
+???: Move that to the next day.. No, the other one.. Yeah that meeting... 
 ===
