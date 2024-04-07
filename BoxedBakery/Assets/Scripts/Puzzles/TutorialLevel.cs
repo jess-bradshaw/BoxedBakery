@@ -9,22 +9,28 @@ public class TutorialLevel : MonoBehaviour
     [SerializeField] private string BaxKnowsBetter;
     [SerializeField] private string CorrectOrder;
     [SerializeField] private string InCorrectOrder;
-    public GameObject CenterSpot; 
-    public GameObject continueButton; 
-    public GameObject Coins; 
-     public GameObject LidOpen; 
-      public GameObject LidClosed; 
-    public FilledSpotDetect filledSpot; 
-    public string item; 
-    public DialogueRunner dialogueRunner;
-    public bool itemChecked; 
-    public bool PackedCheck; 
-    public YarnCollection storyVars;
-    public GameObject tip;
-    public GameObject bigTip; 
-    public int money; 
+    
+    //Puzzle Variables
+        //Spot
+            public GameObject CenterSpot; 
+            public FilledSpotDetect filledSpot; 
+        public string item; 
+        //Checks
+            public bool itemChecked; 
+            public bool PackedCheck; 
 
-    // Update is called once per frame
+    //Player Feedback
+        public GameObject Coins; 
+        public GameObject LidOpen; 
+        public GameObject LidClosed; 
+        public DialogueRunner dialogueRunner;
+        public GameObject continueButton; 
+        public YarnCollection storyVars;
+    //Money 
+        public GameObject tip;
+        public GameObject bigTip; 
+        //public int money; 
+
    void Start()
    {
     itemChecked = false; 
@@ -61,9 +67,7 @@ public class TutorialLevel : MonoBehaviour
                 bigTip.SetActive(true);  
             }
             PackedCheck = true; 
-            continueButton.SetActive(false); 
-            LidClosed.SetActive(true);
-            LidOpen.SetActive(false); 
+            Lids(); 
             dialogueRunner.StartDialogue(CorrectOrder);
             
         }
@@ -73,17 +77,22 @@ public class TutorialLevel : MonoBehaviour
             {
                 dialogueRunner.StartDialogue(BaxKnowsBetter); 
                 itemChecked = true;
-            }
-            else 
-            {
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.CoinPaid, this.transform.position); 
-                Coins.SetActive(true); 
-                LidClosed.SetActive(true);
-                LidOpen.SetActive(false);  
-                PackedCheck = true; 
-                dialogueRunner.StartDialogue(InCorrectOrder);
                 continueButton.SetActive(false); 
             }
+            else 
+            { 
+                Lids();  
+                PackedCheck = true; 
+                dialogueRunner.StartDialogue(InCorrectOrder);
+            }
         }
+    }
+    public void Lids()
+    {
+        LidClosed.SetActive(true);
+        LidOpen.SetActive(false);
+        Coins.SetActive(true);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.CoinPaid, this.transform.position); 
+        continueButton.SetActive(false);  
     }
 }

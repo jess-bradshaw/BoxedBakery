@@ -6,7 +6,7 @@ using Yarn.Unity;
 [RequireComponent(typeof(CanvasGroup))]
 public class YarnCollection : MonoBehaviour
 {
-    //Cameras
+//Cameras
     public GameObject CustomerCamera;
     public GameObject PackingCamera;
     public GameObject CustomerOrder; 
@@ -19,14 +19,19 @@ public class YarnCollection : MonoBehaviour
     public CanvasGroup canvasGroup; 
     public bool FadeIn;
     public bool FadeOut; 
-   //[SerializeField] bool startFadedOut = false;
 //Characters 
-    public GameObject ReaVisual; 
-    public GameObject ReaOrder; 
-    public bool ReaEnabled; 
-    public GameObject BusyVisual; 
-    public GameObject BusyOrder; 
-    public bool BusyEnabled; 
+    //Rea
+        public GameObject ReaVisual; 
+        public GameObject ReaOrder; 
+        public bool ReaEnabled; 
+        public bool ReaHide; 
+    //Busy
+        public GameObject BusyVisual; 
+        public GameObject BusyOrder;
+        public GameObject BusyDonutOrder; 
+        public GameObject BusyBagelOrder;  
+        public bool BusyEnabled;
+        public bool BusyHide;
 //Tipping
     public bool ReaTip; 
     public bool Tip; 
@@ -41,23 +46,26 @@ public class YarnCollection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Camera moving
+    //Camera moving
         variableStorage.SetValue("$CustomerView", CustomerView);
         variableStorage.SetValue("$PackingView", PackingView);
-       //Camera fading 
+    //Camera fading 
         variableStorage.SetValue("$FadeIn", FadeIn); 
         variableStorage.SetValue("$FadeOut", FadeOut); 
-        //Characters 
+    //Characters 
+        //Rea
         variableStorage.SetValue("$ReaEnabled", ReaEnabled); 
+        variableStorage.SetValue("$ReaHide", ReaHide); 
         variableStorage.SetValue("$ReaOrder", ReaOrder); 
-
+        //Busy
         variableStorage.SetValue("$BusyEnabled", BusyEnabled); 
         variableStorage.SetValue("$BusyOrder", BusyOrder); 
-        //tipping
+        variableStorage.SetValue("$BusyDonutOrder", BusyDonutOrder); 
+        variableStorage.SetValue("$BusyBagelOrder", BusyBagelOrder); 
+    //tipping
         variableStorage.SetValue("$ReaTip", ReaTip);
         variableStorage.SetValue("$ReaBigTip", ReaBigTip);  
-
-        //puzzles
+    //puzzles
         variableStorage.SetValue("$TutorialPuzzle", TutorialP);
         variableStorage.SetValue("$Puzzle1", P1);  
     }
@@ -76,7 +84,6 @@ public class YarnCollection : MonoBehaviour
         CustomerCamera.SetActive(true);
         PackingCamera.SetActive(false);
         ReaOrder.SetActive(false);
-        ReaVisual.SetActive(false);
     }
 //Fades Commands 
     [YarnCommand("FadeIn")]
@@ -98,7 +105,6 @@ public class YarnCollection : MonoBehaviour
         {
             var factor = elapsed / time;
             canvasGroup.alpha = Mathf.Lerp(from, to, factor);
-
             yield return null;
             elapsed += Time.deltaTime;
         }
@@ -107,40 +113,33 @@ public class YarnCollection : MonoBehaviour
 
 //Rea Character Commands
     [YarnCommand("ReaEnabled")]
-    public void EnableRea()
-    {
-        ReaVisual.SetActive(true);
-    }
+    public void EnableRea(){ReaVisual.SetActive(true);}
+    
+    [YarnCommand("ReaHide")]
+    public void HideRea(){ReaVisual.SetActive(false);}
+    
     [YarnCommand("ReaOrder")]
-    public void DisplayReaOrder()
-    {
-        ReaOrder.SetActive(true);
-    }
+    public void DisplayReaOrder(){ReaOrder.SetActive(true);}
+    
     [YarnCommand("ReaTip")]
-    public void ReaTipped()
-    {
-        Debug.Log("Rea tipped"); 
-        Tip = true; 
-    }
-     [YarnCommand("ReaBigTip")]
-    public void ReaTippedBig()
-    {
-        Debug.Log("Rea tipped BIG"); 
-        BigTip = true; 
-    }
+    public void ReaTipped(){Tip = true; }
+    
+    [YarnCommand("ReaBigTip")]
+    public void ReaTippedBig(){BigTip = true;}
+
 //Business Character Commands 
     [YarnCommand("BusyEnabled")]
-    public void EnableBusy()
-    {
-        BusyVisual.SetActive(true);
-    }
+    public void EnableBusy(){BusyVisual.SetActive(true);}
+    
     [YarnCommand("BusyOrder")]
-    public void DisplayBusyOrder()
-    {
-        BusyOrder.SetActive(true);
-    }
+    public void DisplayBusyOrder(){BusyOrder.SetActive(true);}
+    [YarnCommand("BusyDonutOrder")]
+    public void DisplayDonutOrder(){BusyDonutOrder.SetActive(true);}
+    [YarnCommand("BusyBagelOrder")]
+    public void DisplayBagelOrder(){BusyBagelOrder.SetActive(true);}
+
 //Puzzle Commands 
-     [YarnCommand("TutorialPuzzle")]
+    [YarnCommand("TutorialPuzzle")]
     public void DisablePuzzleT()
     {
         TutorialPuzzle.SetActive(false);

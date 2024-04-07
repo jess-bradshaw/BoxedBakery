@@ -8,22 +8,39 @@ public class PuzzleOne : MonoBehaviour
     [SerializeField] private string BusyTooBusy;
     [SerializeField] private string BusyCorrectOrder;
     [SerializeField] private string BusyIncorrectOrder;
-    public GameObject topLeft; 
-    public GameObject bottomLeft; 
-    public GameObject topRight; 
-    public GameObject bottomRight; 
-    public GameObject continueButton; 
-    public GameObject Coins; 
-    public GameObject LidOpen; 
-    public GameObject LidClosed;
-    public DialogueRunner dialogueRunner;
-    public YarnCollection storyVars;
+   
+    //Puzzle Variables 
+        //Spots
+            public GameObject topLeft; 
+            public FilledSpotDetect filledTopLeft; 
+            public GameObject bottomLeft; 
+            public FilledSpotDetect filledBottomLeft; 
+            public GameObject topRight; 
+            public FilledSpotDetect filledTopRight; 
+            public GameObject bottomRight; 
+            public FilledSpotDetect filledBottomRight; 
 
-    public bool itemChecked; 
-    public bool PackedCheck1; 
+        //Items
+            public string itemTopLeft; 
+            public string itemBottomLeft;
+            public string itemTopRight; 
+            public string itemBottomRight; 
+        //Checks
+            public bool itemsChecked; 
+            public bool PackedCheck1; 
+     
+    //Player Feedback
+        public GameObject Coins; 
+        public GameObject LidOpen; 
+        public GameObject LidClosed;
+        public DialogueRunner dialogueRunner;
+        public GameObject continueButton;
+        public YarnCollection storyVars;
+//Money
+ 
     void Start()
    {
-    itemChecked = false; 
+    itemsChecked = false; 
     PackedCheck1 = false; 
    }
     
@@ -32,9 +49,13 @@ public class PuzzleOne : MonoBehaviour
     {
         if( topLeft.CompareTag("DropInvalid") && bottomLeft.CompareTag("DropInvalid") && topRight.CompareTag("DropInvalid") && bottomRight.CompareTag("DropInvalid"))
         {
+            itemTopLeft = filledTopLeft.item;
+            itemBottomLeft = filledBottomLeft.item;
+            itemTopRight = filledTopRight.item;
+            itemBottomRight = filledBottomRight.item;
             if(PackedCheck1 == false)
             {
-            continueButton.SetActive(true); 
+            continueButton.SetActive(true);
             }
         }
         else
@@ -45,33 +66,34 @@ public class PuzzleOne : MonoBehaviour
 
     public void checkIfItemisValid()
     {
-        if(PackedCheck1 == false) //fix this. 
+        if(itemTopLeft == "donut" && itemBottomLeft == "donut" && itemTopRight == "donut" && itemBottomRight == "donut") 
         { 
-            Coins.SetActive(true); 
             PackedCheck1 = true; 
-            continueButton.SetActive(false); 
-            LidClosed.SetActive(true);
-            LidOpen.SetActive(false); 
+            Lids();  
             dialogueRunner.StartDialogue(BusyCorrectOrder);
-            
         }
         else 
         {
-            if(itemChecked == false)
+            if(itemsChecked == false)
             {
                 dialogueRunner.StartDialogue(BusyTooBusy); 
-                itemChecked = true;
+                itemsChecked = true;
+                continueButton.SetActive(false); 
             }
             else 
             {
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.CoinPaid, this.transform.position); 
-                Coins.SetActive(true); 
-                LidClosed.SetActive(true);
-                LidOpen.SetActive(false);  
+                Lids();   
                 PackedCheck1 = true; 
                 dialogueRunner.StartDialogue(BusyIncorrectOrder);
-                continueButton.SetActive(false); 
             }
         }
+    }
+     public void Lids()
+    {
+        LidClosed.SetActive(true);
+        LidOpen.SetActive(false); 
+        Coins.SetActive(true);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.CoinPaid, this.transform.position);
+        continueButton.SetActive(false);   
     }
 }
