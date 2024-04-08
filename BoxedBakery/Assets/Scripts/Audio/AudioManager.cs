@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
   public static AudioManager instance {get; private set;}
 
   private EventInstance ambienceEventInstance; 
+  public bool MusicOn; 
   //private EventInstance noiseEventInstance; 
 
 //singleton. 
@@ -23,8 +24,12 @@ public class AudioManager : MonoBehaviour
 
   private void Start()
   {
-  //  InitializeAmbience(FMODEvents.instance.BackgroundMusic); 
-    InitializeAmbience(FMODEvents.instance.BackgroundNoises); 
+    if (MusicOn == false) {
+      InitializeAmbience(FMODEvents.instance.BackgroundMusic); 
+      InitializeAmbience(FMODEvents.instance.BackgroundNoises); 
+      MusicOn = true; 
+    }
+
   }
 
   public void PlayOneShot(EventReference sound, Vector3 worldPos)

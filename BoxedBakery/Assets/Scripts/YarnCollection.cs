@@ -12,7 +12,8 @@ public class YarnCollection : MonoBehaviour
     public GameObject CustomerOrder; 
     public bool CustomerView; 
     public bool PackingView; 
-
+//Others 
+    public GameObject MainMenu; 
     public InMemoryVariableStorage variableStorage;
 
 //fade in and out 
@@ -46,6 +47,8 @@ public class YarnCollection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    //MainMenu Trigger 
+    variableStorage.SetValue("$MainMenu", MainMenu);
     //Camera moving
         variableStorage.SetValue("$CustomerView", CustomerView);
         variableStorage.SetValue("$PackingView", PackingView);
@@ -69,7 +72,11 @@ public class YarnCollection : MonoBehaviour
         variableStorage.SetValue("$TutorialPuzzle", TutorialP);
         variableStorage.SetValue("$Puzzle1", P1);  
     }
-
+    [YarnCommand("MainMenu")]
+    public void CallMainMenu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu"); 
+    }
 //Camera Changing Commands 
     [YarnCommand("PackingView")]
     public void CamToPack()

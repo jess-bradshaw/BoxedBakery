@@ -170,17 +170,18 @@ title: Day1Business
 ???: No. Stop. I said NO.
 Baxter: Welcome-
 ???: Shhh. Mmhm. That's fine. 
--> <i>Wave to get their attention </i> 
+-> <i> Wave to get their attention </i> 
     <i> They hold up a finger as they mmhm and ahh into their phone </i>
 -> "Hello welcome"
     ???: No sorry, say that again I couldn'hear you. 
     <i> the person waves a hand to dismiss you.</i> 
     <<set $BusyWavedOff += 1>> 
+-> <i> Wait until they look up from their phone.</i>
 ???: Yeah, okay. No, I'm out grabbing the team breakfast.
 Baxter: ... 
 ???: Nah, some new shop.. don't know yet.
-<i> The hold up four fingers and then draw a circle </i> 
-???: Just put my order in-No that meeting isn't for another hour... 
+<i> They hold up four fingers, then draw a circle. </i> 
+???: Just put my order-No that meeting isn't for another hour... 
 <i> That was an order? What should I do? </i>
 -> <i> Interupt themm to clarify what the order was </i>
     Baxter: Sorry, could I-
@@ -197,7 +198,6 @@ Baxter: ...
     <<Puzzle1 EventSystem>>
     <<jump BusyPacking>>
 -> "Donuts got it"
-    //Track Donuts 
     <<FadeOut EventSystem>>
     <<PackingView EventSystem>>
     <<BusyDonutOrder EventSystem>>
@@ -205,7 +205,6 @@ Baxter: ...
     <<Puzzle1 EventSystem>>
     <<jump BusyPacking>>
 -> "Bagels?"
-    //Track Bagels 
     <<FadeOut EventSystem>>
     <<PackingView EventSystem>>
     <<BusyBagelOrder EventSystem>>
@@ -234,6 +233,10 @@ title: BusyPacking
 ---
 <<FadeIn EventSystem>>
 ===
+title: BusyTooBusy
+---
+???: Move that to the next day.. No, the other one.. Yeah that meeting... 
+===
 title: BusyCorrectOrder
 ---
 <<FadeOut EventSystem>>
@@ -242,8 +245,14 @@ title: BusyCorrectOrder
 <<BusyEnabled EventSystem>>
 <<FadeIn EventSystem>>
 ???: Yeah, on my way. These look good. 
-<i> The conversation continues as they grab the box and head out the door. </i>
+???: Ha. Maybe next time you're in town. 
+<i> The conversation continues as they grab the box and a business card, then head out the door. </i>
 //Add door sound 
+<i> You tidy up tucking the unsold bagels back to their proper home. </i> 
+<<FadeOut EventSystem>>
+<<wait 1>>
+<<MainMenu EventSystem>>
+<<MainMenu EventSystem>>
 ===
 
 title: BusyIncorrectOrder
@@ -261,8 +270,8 @@ title: BusyIncorrectOrder
 ???: Mmhm. We can move that to tomorrow.
 <i> The conversation continues as they grab the box and head out the door. </i> 
 //Add Door Sound 
-===
-title: BusyTooBusy
----
-???: Move that to the next day.. No, the other one.. Yeah that meeting... 
+<<FadeOut EventSystem>>
+<<wait 1>>
+<<MainMenu EventSystem>>
+//Add in something to fade out music so it can restart in the main menu
 ===
