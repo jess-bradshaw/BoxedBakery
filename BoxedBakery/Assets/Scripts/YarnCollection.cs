@@ -31,6 +31,7 @@ public class YarnCollection : MonoBehaviour
         public GameObject BusyOrder;
         public GameObject BusyDonutOrder; 
         public GameObject BusyBagelOrder;  
+        public GameObject BusyAddOn;  
         public bool BusyEnabled;
         public bool BusyHide;
 //Tipping
@@ -91,6 +92,9 @@ public class YarnCollection : MonoBehaviour
         CustomerCamera.SetActive(true);
         PackingCamera.SetActive(false);
         ReaOrder.SetActive(false);
+        BusyOrder.SetActive(false);
+        BusyBagelOrder.SetActive(false);
+        BusyDonutOrder.SetActive(false);
     }
 //Fades Commands 
     [YarnCommand("FadeIn")]
@@ -139,7 +143,9 @@ public class YarnCollection : MonoBehaviour
     public void EnableBusy(){BusyVisual.SetActive(true);}
     
     [YarnCommand("BusyOrder")]
-    public void DisplayBusyOrder(){BusyOrder.SetActive(true);}
+    public void DisplayBusyOrder(){
+        BusyOrder.SetActive(true); 
+        BusyAddOn.SetActive(true);}
     [YarnCommand("BusyDonutOrder")]
     public void DisplayDonutOrder(){BusyDonutOrder.SetActive(true);}
     [YarnCommand("BusyBagelOrder")]

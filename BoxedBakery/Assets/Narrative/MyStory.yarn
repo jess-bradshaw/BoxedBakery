@@ -224,7 +224,6 @@ Baxter: ...
     <<FadeOut EventSystem>>
     <<PackingView EventSystem>>
     <<BusyOrder EventSystem>>
-    <<LarsOrder EventSystem>>
     <<wait 1>>
     <<Puzzle1 EventSystem>>
     <<jump BusyPacking>>
