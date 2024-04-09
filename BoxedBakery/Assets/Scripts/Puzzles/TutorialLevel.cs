@@ -14,10 +14,11 @@ public class TutorialLevel : MonoBehaviour
         //Spot
             public GameObject CenterSpot; 
             public FilledSpotDetect filledSpot; 
-        public string item; 
+            public string item; 
         //Checks
             public bool itemChecked; 
-            public bool PackedCheck; 
+            public bool PackedCheck;
+            public YarnCollection dialogue; 
 
     //Player Feedback
         public GameObject Coins; 
@@ -43,7 +44,10 @@ public class TutorialLevel : MonoBehaviour
             item = filledSpot.item;  
             if(PackedCheck == false)
             {
-            continueButton.SetActive(true); 
+                if (dialogue.hideButton == false)
+                {
+                    continueButton.SetActive(true);
+                }
             }
         }
         else
@@ -57,12 +61,12 @@ public class TutorialLevel : MonoBehaviour
         if(item == "Strawberry")
         { 
             Coins.SetActive(true); 
-             if (storyVars.Tip== true)
+             if (storyVars.Tip== true) //Checks if the person was tipped or not. 
             { 
                 tip.SetActive(true); 
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.CoinTipped, this.transform.position); 
             }
-            if (storyVars.BigTip== true)
+            if (storyVars.BigTip== true) //checks if the person was super nice and tipped even more. 
             { 
                 bigTip.SetActive(true);  
             }

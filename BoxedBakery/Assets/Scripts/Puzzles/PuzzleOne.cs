@@ -27,10 +27,11 @@ public class PuzzleOne : MonoBehaviour
             public string itemBottomRight; 
         //Checks
             public bool itemsChecked; 
-            public bool PackedCheck1; 
-     
+            public bool PackedCheck1;
+            public YarnCollection dialogue;
+
     //Player Feedback
-        public GameObject Coins; 
+    public GameObject Coins; 
         public GameObject LidOpen; 
         public GameObject LidClosed;
         public DialogueRunner dialogueRunner;
@@ -55,7 +56,10 @@ public class PuzzleOne : MonoBehaviour
             itemBottomRight = filledBottomRight.item;
             if(PackedCheck1 == false)
             {
-            continueButton.SetActive(true);
+                if (dialogue.hideButton == false)
+                {
+                    continueButton.SetActive(true);
+                }
             }
         }
         else

@@ -6122,6 +6122,7 @@ MonoBehaviour:
   item: 
   itemChecked: 0
   PackedCheck: 0
+  dialogue: {fileID: 2131761607}
   Coins: {fileID: 1766504584}
   LidOpen: {fileID: 1168485705}
   LidClosed: {fileID: 330088779}
@@ -6159,6 +6160,7 @@ MonoBehaviour:
   itemBottomRight: 
   itemsChecked: 0
   PackedCheck1: 0
+  dialogue: {fileID: 2131761607}
   Coins: {fileID: 1954721358}
   LidOpen: {fileID: 1343289890}
   LidClosed: {fileID: 1238841889}
@@ -7988,6 +7990,7 @@ MonoBehaviour:
   CustomerView: 0
   PackingView: 0
   MainMenu: {fileID: 0}
+  hideButton: 0
   variableStorage: {fileID: 625599639}
   canvasGroup: {fileID: 19208169}
   FadeIn: 0

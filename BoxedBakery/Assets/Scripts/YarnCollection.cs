@@ -13,7 +13,8 @@ public class YarnCollection : MonoBehaviour
     public bool CustomerView; 
     public bool PackingView; 
 //Others 
-    public GameObject MainMenu; 
+    public GameObject MainMenu;
+    public bool hideButton; 
     public InMemoryVariableStorage variableStorage;
 
 //fade in and out 
@@ -43,35 +44,36 @@ public class YarnCollection : MonoBehaviour
     public GameObject TutorialPuzzle; 
     public bool TutorialP;
     public GameObject Puzzle1; 
-    public bool P1; 
+    public bool P1;
 
     // Update is called once per frame
     void Update()
     {
-    //MainMenu Trigger 
-    variableStorage.SetValue("$MainMenu", MainMenu);
-    //Camera moving
+        //MainMenu Trigger 
+        variableStorage.SetValue("$MainMenu", MainMenu);
+        //Camera moving
         variableStorage.SetValue("$CustomerView", CustomerView);
         variableStorage.SetValue("$PackingView", PackingView);
-    //Camera fading 
-        variableStorage.SetValue("$FadeIn", FadeIn); 
-        variableStorage.SetValue("$FadeOut", FadeOut); 
-    //Characters 
+        //Camera fading 
+        variableStorage.SetValue("$FadeIn", FadeIn);
+        variableStorage.SetValue("$FadeOut", FadeOut);
+        //Characters 
         //Rea
-        variableStorage.SetValue("$ReaEnabled", ReaEnabled); 
-        variableStorage.SetValue("$ReaHide", ReaHide); 
-        variableStorage.SetValue("$ReaOrder", ReaOrder); 
+        variableStorage.SetValue("$ReaEnabled", ReaEnabled);
+        variableStorage.SetValue("$ReaHide", ReaHide);
+        variableStorage.SetValue("$ReaOrder", ReaOrder);
         //Busy
-        variableStorage.SetValue("$BusyEnabled", BusyEnabled); 
-        variableStorage.SetValue("$BusyOrder", BusyOrder); 
-        variableStorage.SetValue("$BusyDonutOrder", BusyDonutOrder); 
-        variableStorage.SetValue("$BusyBagelOrder", BusyBagelOrder); 
-    //tipping
+        variableStorage.SetValue("$BusyEnabled", BusyEnabled);
+        variableStorage.SetValue("$BusyOrder", BusyOrder);
+        variableStorage.SetValue("$BusyDonutOrder", BusyDonutOrder);
+        variableStorage.SetValue("$BusyBagelOrder", BusyBagelOrder);
+        //tipping
         variableStorage.SetValue("$ReaTip", ReaTip);
-        variableStorage.SetValue("$ReaBigTip", ReaBigTip);  
-    //puzzles
+        variableStorage.SetValue("$ReaBigTip", ReaBigTip);
+        //puzzles
         variableStorage.SetValue("$TutorialPuzzle", TutorialP);
-        variableStorage.SetValue("$Puzzle1", P1);  
+        variableStorage.SetValue("$Puzzle1", P1);
+        variableStorage.SetValue("$hideButton", hideButton); 
     }
     [YarnCommand("MainMenu")]
     public void CallMainMenu()
@@ -162,5 +164,16 @@ public class YarnCollection : MonoBehaviour
     public void EnablePuzzle1()
     {
         Puzzle1.SetActive(true);
+    }
+
+    [YarnCommand("hideButton")]
+    public void ToggleButton()
+    {
+        if(hideButton == false)
+        {
+            hideButton = true;
+        }
+        else
+        { hideButton = false; }
     }
 }

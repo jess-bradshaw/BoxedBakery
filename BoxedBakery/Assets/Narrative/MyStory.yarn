@@ -88,11 +88,13 @@ title: TestingPacking
 
 title: BaxKnowsBetter
 ---
+<<hideButton EventSystem>>
 <<if $Rea_Angry > 0>>
     Rea: That isn't.. nevermind. 
 <<else>>
     Rea: Umm Bax, my regular is a bit more colourful.. 
 <<endif>>
+<<hideButton EventSystem>>
 ===
 
 title: Day1ReaOrderRight
@@ -234,7 +236,9 @@ title: BusyPacking
 ===
 title: BusyTooBusy
 ---
+<<hideButton EventSystem>>
 ???: Move that to the next day.. No, the other one.. Yeah that meeting... 
+<<hideButton EventSystem>>
 ===
 title: BusyCorrectOrder
 ---
