@@ -34,9 +34,9 @@ position: -266,-153
 <i>You look up to see a mess of blonde hair.</i>
 Baxter: Oh hey Rea. 
 -> Can I get you anything?
-    Rea: Sure, but maybe rephrase that as what can I get you.. you know get the customer talking. 
+    Rea: Sure, but maybe rephrase that as 'what can I get you?' You know, get the customer talking. 
     Baxter: Aye, you're right.. I'm too in my head is all. 
-    Baxter: It's not like I haven't worked at a shop before but it feels different. 
+    Baxter: It's not like I haven't worked at a shop before, but it feels different. 
     Rea: It is different. This is -your- place, just don't put so much pressure on yourself. 
     Rea: Smile, wink, you know... be you. It'll be fineee. 
     <<jump Day1Smirk>> <<ReaTip EventSystem>>
@@ -99,7 +99,7 @@ title: BaxKnowsBetter
 
 title: Day1ReaOrderRight
 ---
-<i> You smile looking down at your best friends favourite snack, first order complete. You slide it over glancing back up</i>
+<i> You smile looking down at your best friend's favourite snack, first order complete. You slide it over glancing back up</i>
 <<FadeOut EventSystem>>
 <<CustomerView EventSystem>>
 <<ReaEnabled EventSystem>>
@@ -137,7 +137,7 @@ title: Day1ReaOrderWrong
      <<FadeOut EventSystem>>
     <<CustomerView EventSystem>>
     <<FadeIn EventSystem>>
-    <i>she storms out of the shop the door banging as she leaves.</i>
+    <i> She storms out of the shop the door banging as she leaves.</i>
     <<ReaHide EventSystem>>
     //door sounds
     Baxter: Oh.. 
@@ -145,7 +145,7 @@ title: Day1ReaOrderWrong
         -> I need a moment. 
             Baxter: I feel bad. I know she was trying to help, maybe I am more stressed out about today. I should call her later.
                 //Track that Bax will call her. 
-    Baxter: Well I should put that back before someone else comes in. 
+    Baxter: I should put that back before someone else comes in. 
 <<else>>
     <i> Rea scrunches her nose at the box then looks up at you with round eyes. </i>
     Rea: Umm thanks Bax, I.. hope your day goes smoothly. S-sorry if me stopping in caused stress. Good luck today.
@@ -165,7 +165,7 @@ title: Day1Business
 <i> There was a steady flow of customers eager to check out what the shop had to offer.</i>
 <i> Just as the morning rush started to die off, the door snaps open and a flurry of noise comes in. </i>
 //Add in door sound (possible custom lots of street noise or mumbling on the phone?)
-<i> The loud voice booming into a phone held infront of their face as the figure walks up gesturing their free hand around.</i>
+<i> The loud voice booming into a phone held in front of their face as the figure walks up gesturing their free hand around.</i>
 <<BusyEnabled EventSystem>>
 ???: No that won't work, we can't move the deadline they have to have it in before then. 
 ???: No.. No. I can't. 
@@ -175,7 +175,7 @@ Baxter: Welcome-
 -> <i> Wave to get their attention </i> 
     <i> They hold up a finger as they mmhm and ahh into their phone </i>
 -> "Hello welcome"
-    ???: No sorry, say that again I couldn'hear you. 
+    ???: No sorry, say that again I couldn't hear you. 
     <i> the person waves a hand to dismiss you.</i> 
     <<set $BusyWavedOff += 1>> 
 -> <i> Wait until they look up from their phone.</i>
@@ -185,7 +185,7 @@ Baxter: ...
 <i> They hold up four fingers, then draw a circle. </i> 
 ???: Just put my order-No that meeting isn't for another hour... 
 <i> That was an order? What should I do? </i>
--> <i> Interupt themm to clarify what the order was </i>
+-> <i> Interrupt them to clarify what the order was </i>
     Baxter: Sorry, could I-
     ???: Ugh. Say that again? 
     <<if $BusyWavedOff > 0>>
@@ -216,7 +216,7 @@ Baxter: ...
 -> <i> Wait until they give me full attention </i>
     ???: ... Have Lars look into that..
     Baxter: ...
-    ???: Sure. I know she's busy but she's our expert. 
+    ???: Sure. I know she's busy.. she's our expert. 
     Baxter: ... 
     ???: Yeah. Check with her, I'll even pick her up a Taiyaki before I leave here. 
     Baxter: ... 
@@ -269,6 +269,8 @@ title: BusyIncorrectOrder
 ???: I don't have time for this, team gets what they get.
 <<if $Lars == false>>
 ???: Get Kiba to grabs something for Lars on his way in. We want her on our side. 
+<<else>>
+???: At least they got the Taiyaki right. 
 <<endif>>
 ???: Mmhm. We can move that to tomorrow.
 <i> The conversation continues as they grab the box and head out the door. </i> 
