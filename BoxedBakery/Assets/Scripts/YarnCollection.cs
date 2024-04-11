@@ -36,6 +36,8 @@ public class YarnCollection : MonoBehaviour
         public GameObject BusyBagelOrder;  
         public GameObject BusyAddOn;  
         public bool BusyEnabled;
+        public GameObject BusyFour; 
+        public GameObject BusyCircle; 
         public bool BusyHide;
 //Tipping
     public bool ReaTip; 
@@ -68,6 +70,8 @@ public class YarnCollection : MonoBehaviour
         variableStorage.SetValue("$ReaAngry", ReaAngry);
         //Busy
         variableStorage.SetValue("$BusyEnabled", BusyEnabled);
+        variableStorage.SetValue("$BusyFour", BusyFour);
+        variableStorage.SetValue("$BusyCircle", BusyCircle);
         variableStorage.SetValue("$BusyOrder", BusyOrder);
         variableStorage.SetValue("$BusyDonutOrder", BusyDonutOrder);
         variableStorage.SetValue("$BusyBagelOrder", BusyBagelOrder);
@@ -164,8 +168,19 @@ public class YarnCollection : MonoBehaviour
 
 //Business Character Commands 
     [YarnCommand("BusyEnabled")]
-    public void EnableBusy(){BusyVisual.SetActive(true);}
+    public void EnableBusy(){
+        BusyVisual.SetActive(true);
+        BusyFour.SetActive(false); 
+        BusyCircle.SetActive(false); }
+       [YarnCommand("BusyFour")]
+    public void EnableFour(){
+        BusyFour.SetActive(true); 
+        BusyCircle.SetActive(false);}   
     
+    [YarnCommand("BusyCircle")]
+    public void EnableCircle(){
+        BusyCircle.SetActive(true);
+        BusyFour.SetActive(false);}
     [YarnCommand("BusyOrder")]
     public void DisplayBusyOrder(){
         BusyOrder.SetActive(true); 

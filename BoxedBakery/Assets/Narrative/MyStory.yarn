@@ -185,7 +185,11 @@ Baxter: Welcome-
 ???: Yeah, okay. No, I'm out grabbing the team breakfast.
 Baxter: ... 
 ???: Nah, some new shop.. don't know yet.
-<i> They hold up four fingers, then draw a circle. </i> 
+<<BusyFour EventSystem>>
+<i> They hold up four fingers</i> 
+<<BusyCircle EventSystem>>
+<i> Then they draw a circle. </i> 
+<<BusyEnabled EventSystem>>
 ???: Just put my order-No that meeting isn't for another hour... 
 <i> That was an order? What should I do? </i>
 -> <i> Interrupt them to clarify what the order was </i>
