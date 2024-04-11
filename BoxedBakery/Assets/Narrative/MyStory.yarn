@@ -166,31 +166,33 @@ title: Day1ReaOrderWrong
 title: Day1Business
 ---
 <i> There was a steady flow of customers eager to check out what the shop had to offer.</i>
-<i> Just as the morning rush started to die off, the door snaps open and a flurry of noise comes in. </i>
+<i> Just as the morning rush started to die off..</i>
+<i>the door snaps open and a flurry of noise comes in. </i>
 //Add in door sound (possible custom lots of street noise or mumbling on the phone?)
-<i> The loud voice booming into a phone held in front of their face as the figure walks up gesturing their free hand around.</i>
+<i> They turn away continuing their conversation on the phone.</i>
 <<BusyEnabled EventSystem>>
-???: No that won't work, we can't move the deadline they have to have it in before then. 
+???: No that won't work, we can't move the deadline. 
 ???: No.. No. I can't. 
-???: No. Stop. I said NO.
+???: No. Stop. 
+???: I said NO.
 Baxter: Welcome-
 ???: Shhh. Mmhm. That's fine. 
 -> <i> Wave to get their attention </i> 
-    <i> They hold up a finger as they mmhm and ahh into their phone </i>
+    <i> They hold up a finger as they 'Mmhm' into their phone </i>
 -> "Hello welcome"
     ???: No sorry, say that again I couldn't hear you. 
-    <i> the person waves a hand to dismiss you.</i> 
+    <i> The person waves a hand to dismiss you.</i> //add in extra wave?
     <<set $BusyWavedOff += 1>> 
 -> <i> Wait until they look up from their phone.</i>
 ???: Yeah, okay. No, I'm out grabbing the team breakfast.
 Baxter: ... 
-???: Nah, some new shop.. don't know yet.
+???: Nah, some new shop.. don't know.
 <<BusyFour EventSystem>>
 <i> They hold up four fingers</i> 
 <<BusyCircle EventSystem>>
 <i> Then they draw a circle. </i> 
 <<BusyEnabled EventSystem>>
-???: Just put my order-No that meeting isn't for another hour... 
+???: Just put my order- No that meeting isn't for an hour... 
 <i> That was an order? What should I do? </i>
 -> <i> Interrupt them to clarify what the order was </i>
     Baxter: Sorry, could I-
@@ -228,7 +230,8 @@ Baxter: ...
     ???: Yeah. Check with her, I'll even pick her up a Taiyaki before I leave here. 
     Baxter: ... 
     ???: Yeah just some donuts for the team. 
-    <i> Donuts.. they could have at least pointed to the collect you have but at least you have the information now.</i>
+    <i> Donuts..</i> 
+    <i> They could have at least pointed but at least you know now.</i>
     <<set $Lars = true>>
     <<FadeOut EventSystem>>
     <<PackingView EventSystem>>
