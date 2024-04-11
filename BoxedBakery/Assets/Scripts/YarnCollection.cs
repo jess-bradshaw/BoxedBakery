@@ -24,6 +24,8 @@ public class YarnCollection : MonoBehaviour
 //Characters 
     //Rea
         public GameObject ReaVisual; 
+        public GameObject ReaWorried; 
+        public GameObject ReaAngry; 
         public GameObject ReaOrder; 
         public bool ReaEnabled; 
         public bool ReaHide; 
@@ -62,6 +64,8 @@ public class YarnCollection : MonoBehaviour
         variableStorage.SetValue("$ReaEnabled", ReaEnabled);
         variableStorage.SetValue("$ReaHide", ReaHide);
         variableStorage.SetValue("$ReaOrder", ReaOrder);
+        variableStorage.SetValue("$ReaWorried", ReaWorried);
+        variableStorage.SetValue("$ReaAngry", ReaAngry);
         //Busy
         variableStorage.SetValue("$BusyEnabled", BusyEnabled);
         variableStorage.SetValue("$BusyOrder", BusyOrder);
@@ -126,11 +130,29 @@ public class YarnCollection : MonoBehaviour
 
 //Rea Character Commands
     [YarnCommand("ReaEnabled")]
-    public void EnableRea(){ReaVisual.SetActive(true);}
+    public void EnableRea(){
+        ReaVisual.SetActive(true);
+        ReaAngry.SetActive(false);
+        ReaWorried.SetActive(false); }
     
     [YarnCommand("ReaHide")]
-    public void HideRea(){ReaVisual.SetActive(false);}
+    public void HideRea(){
+        ReaVisual.SetActive(false);
+        ReaAngry.SetActive(false);
+        ReaWorried.SetActive(false);
+    }
+    [YarnCommand("ReaAngry")]
+    public void ReaIsAngry(){
+        ReaAngry.SetActive(true);
+        ReaVisual.SetActive(false);
+        ReaWorried.SetActive(false); }
     
+    [YarnCommand("ReaWorried")]
+    public void ReaIsWorried(){
+        ReaWorried.SetActive(true);
+        ReaAngry.SetActive(false);
+        ReaVisual.SetActive(false); }
+
     [YarnCommand("ReaOrder")]
     public void DisplayReaOrder(){ReaOrder.SetActive(true);}
     

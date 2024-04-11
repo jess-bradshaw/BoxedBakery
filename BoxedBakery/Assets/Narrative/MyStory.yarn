@@ -10,7 +10,7 @@ position: -266,-153
 ---
 <<FadeIn EventSystem>>
 // Add in audio cue for Door ***
-<i>You hear the door creek open as you are busy tidying up the front counter.</i>
+<i>You hear the door creak open as you are busy tidying up the front counter.</i>
 -> Oh, hello w-welcome!
     ???: Don't be so nervous Baxter, it's just me. 
 -> Welcome to my bakery what can I get you? 
@@ -41,6 +41,7 @@ Baxter: Oh hey Rea.
     Rea: Smile, wink, you know... be you. It'll be fineee. 
     <<jump Day1Smirk>> <<ReaTip EventSystem>>
 -> Move you are blocking the door what if a customer comes in?
+    <<ReaWorried EventSystem>>
     Rea: Bax.. you doing okay? I get that today is stressful but even for you that seemed harsh.
     -> Baxter: Yeah.. fine. Whatever just move. 
         Rea: Umm okay. Can I get a strawberry cupcake? //She tells him but he doesn't write down the order. 
@@ -48,6 +49,7 @@ Baxter: Oh hey Rea.
         <<set $Rea_Angry += 1>> 
         <<jump Day1Ignore>>
     -> Baxter: Oh sorry, I'm anxious about today.
+        <<ReaEnabled EventSystem>>
         Rea: It's okay, that's why I wanted to visit before it got busy. 
         Rea: You got this, plus you can get your first customer out of the way. 
         <i>She winked before the two of you break into soft chuckles. Just want you needed.</i> 
@@ -74,6 +76,7 @@ Rea: Much better! The regular please.
 title: Day1Ignore
 position: -50,41
 ---
+<<ReaWorried EventSystem>>
 <i>Rea watches you with worry etched across her face. You don't bother writing her order down.</i>
 <<FadeOut EventSystem>>
 <<PackingView EventSystem>>
@@ -106,8 +109,10 @@ title: Day1ReaOrderRight
 <<wait 1>>
 <<FadeIn EventSystem>>
 <<if $Rea_Angry > 0>>
+    <<ReaWorried EventSystem>>
     Rea: Thanks Bax, I hope I didn't throw you off coming in. 
     Baxter: Thanks Rea, sorry about earlier.
+    <<ReaEnabled EventSystem>>
     Rea: It's okay, deep breath you got this. Call me later if you want. 
     //Track that Bax can call her
 <<else>>
@@ -129,16 +134,14 @@ title: Day1ReaOrderWrong
 <i> You sigh, does this even really count as an order? You slide it over glancing back up</i>
 <<FadeOut EventSystem>>
 <<CustomerView EventSystem>>
-<<ReaEnabled EventSystem>>
+<<ReaWorried EventSystem>>
 <<wait 1>>
 <<FadeIn EventSystem>>
 <<if $Rea_Angry > 0>>
+<<ReaAngry EventSystem>>
     Rea: Keep it. I was just trying to help but it seems you can't even remember your best friend's order.
-     <<FadeOut EventSystem>>
-    <<CustomerView EventSystem>>
-    <<FadeIn EventSystem>>
-    <i> She storms out of the shop the door banging as she leaves.</i>
     <<ReaHide EventSystem>>
+    <i> She storms out of the shop the door banging as she leaves.</i>
     //door sounds
     Baxter: Oh.. 
         -> I didn't need her storming in here anyways. 
