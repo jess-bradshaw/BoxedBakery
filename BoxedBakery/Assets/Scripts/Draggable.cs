@@ -48,7 +48,7 @@ public class Draggable : MonoBehaviour
    {
         Draggable collidedDraggable = other.GetComponent<Draggable>(); 
 
-        if (collidedDraggable != null && _dragController.LastDragged.gameObject == gameObject) //resposition if overlapping 
+        if ((collidedDraggable != null && _dragController.LastDragged.gameObject == gameObject) || other.CompareTag("NoDrop")) //resposition if overlapping 
         {
             ColliderDistance2D colliderDistance2D = other.Distance(_collider); 
             Vector3 diff = new Vector3(colliderDistance2D.normal.x, colliderDistance2D.normal.y) * colliderDistance2D.distance; 

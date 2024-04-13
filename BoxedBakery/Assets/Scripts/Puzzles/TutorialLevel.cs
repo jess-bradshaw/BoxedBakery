@@ -14,6 +14,7 @@ public class TutorialLevel : MonoBehaviour
         //Spot
             public GameObject CenterSpot; 
             public FilledSpotDetect filledSpot; 
+        //Item
             public string item; 
         //Checks
             public bool itemChecked; 
@@ -30,6 +31,7 @@ public class TutorialLevel : MonoBehaviour
     //Money 
         public GameObject tip;
         public GameObject bigTip; 
+        public GameObject fishMoney; 
         //public int money; 
 
    void Start()

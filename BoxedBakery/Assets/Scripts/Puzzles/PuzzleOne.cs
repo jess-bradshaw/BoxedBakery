@@ -32,13 +32,15 @@ public class PuzzleOne : MonoBehaviour
 
     //Player Feedback
     public GameObject Coins; 
-        public GameObject LidOpen; 
-        public GameObject LidClosed;
-        public DialogueRunner dialogueRunner;
-        public GameObject continueButton;
-        public YarnCollection storyVars;
+    public GameObject LidOpen; 
+    public GameObject LidClosed;
+    public DialogueRunner dialogueRunner;
+    public GameObject continueButton;
+    public YarnCollection storyVars;
 //Money
- 
+    public GameObject tip;
+    public GameObject bigTip; 
+    public GameObject fishMoney; 
     void Start()
    {
     itemsChecked = false; 
@@ -72,12 +74,27 @@ public class PuzzleOne : MonoBehaviour
     {
         if(itemTopLeft == "donut" && itemBottomLeft == "donut" && itemTopRight == "donut" && itemBottomRight == "donut") 
         { 
+             if (storyVars.BTip== true) //Checks if the person was tipped or not. 
+            { 
+                tip.SetActive(true); 
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.CoinTipped, this.transform.position); 
+            }
+            if (storyVars.BBigTip== true) //checks if the person was super nice and tipped even more. 
+            { 
+                bigTip.SetActive(true);  
+            }
+             if (storyVars.Lars== true) //checks if the person was super nice and tipped even more. 
+            { 
+                fishMoney.SetActive(true);  
+                Debug.Log("FIIIIISH"); 
+            }
             PackedCheck1 = true; 
             Lids();  
             dialogueRunner.StartDialogue(BusyCorrectOrder);
         }
         else 
         {
+             
             if(itemsChecked == false)
             {
                 dialogueRunner.StartDialogue(BusyTooBusy); 
@@ -86,10 +103,16 @@ public class PuzzleOne : MonoBehaviour
             }
             else 
             {
+                if (storyVars.Lars== true) //checks if the person was super nice and tipped even more. 
+                { 
+                    fishMoney.SetActive(true);  
+                    Debug.Log("FIIIIISH2"); 
+                }
                 Lids();   
                 PackedCheck1 = true; 
                 dialogueRunner.StartDialogue(BusyIncorrectOrder);
             }
+            
         }
     }
      public void Lids()

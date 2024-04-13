@@ -27,6 +27,7 @@ public class YarnCollection : MonoBehaviour
         public GameObject ReaWorried; 
         public GameObject ReaAngry; 
         public GameObject ReaOrder; 
+        public GameObject ReaHappy;
         public bool ReaEnabled; 
         public bool ReaHide; 
     //Busy
@@ -39,16 +40,23 @@ public class YarnCollection : MonoBehaviour
         public GameObject BusyFour; 
         public GameObject BusyCircle; 
         public bool BusyHide;
+    //Lars
+        public bool Lars; 
 //Tipping
     public bool ReaTip; 
     public bool Tip; 
     public bool ReaBigTip; 
     public bool BigTip; 
+      public bool BusyTip; 
+    public bool BTip; 
+    public bool BusyBigTip; 
+    public bool BBigTip; 
 //Puzzles
     public GameObject TutorialPuzzle; 
     public bool TutorialP;
     public GameObject Puzzle1; 
     public bool P1;
+    public bool DoorSound; 
 
     // Update is called once per frame
     void Update()
@@ -68,20 +76,28 @@ public class YarnCollection : MonoBehaviour
         variableStorage.SetValue("$ReaOrder", ReaOrder);
         variableStorage.SetValue("$ReaWorried", ReaWorried);
         variableStorage.SetValue("$ReaAngry", ReaAngry);
+        variableStorage.SetValue("$ReaHappy", ReaHappy);
         //Busy
         variableStorage.SetValue("$BusyEnabled", BusyEnabled);
+         variableStorage.SetValue("$BusyHide", BusyHide);
         variableStorage.SetValue("$BusyFour", BusyFour);
         variableStorage.SetValue("$BusyCircle", BusyCircle);
         variableStorage.SetValue("$BusyOrder", BusyOrder);
         variableStorage.SetValue("$BusyDonutOrder", BusyDonutOrder);
         variableStorage.SetValue("$BusyBagelOrder", BusyBagelOrder);
+        //Lars 
+        variableStorage.SetValue("$Lars", Lars);
         //tipping
         variableStorage.SetValue("$ReaTip", ReaTip);
         variableStorage.SetValue("$ReaBigTip", ReaBigTip);
+        variableStorage.SetValue("$BusyTip", BusyTip);
+        variableStorage.SetValue("$BusyBigTip", BusyBigTip);
         //puzzles
         variableStorage.SetValue("$TutorialPuzzle", TutorialP);
         variableStorage.SetValue("$Puzzle1", P1);
         variableStorage.SetValue("$hideButton", hideButton); 
+
+        variableStorage.SetValue("$DoorSound", DoorSound); 
     }
     [YarnCommand("MainMenu")]
     public void CallMainMenu()
@@ -136,27 +152,38 @@ public class YarnCollection : MonoBehaviour
     [YarnCommand("ReaEnabled")]
     public void EnableRea(){
         ReaVisual.SetActive(true);
+        ReaHappy.SetActive(false);
         ReaAngry.SetActive(false);
         ReaWorried.SetActive(false); }
     
     [YarnCommand("ReaHide")]
     public void HideRea(){
         ReaVisual.SetActive(false);
+        ReaHappy.SetActive(false);
         ReaAngry.SetActive(false);
         ReaWorried.SetActive(false);
     }
     [YarnCommand("ReaAngry")]
     public void ReaIsAngry(){
         ReaAngry.SetActive(true);
+        ReaHappy.SetActive(false);
         ReaVisual.SetActive(false);
         ReaWorried.SetActive(false); }
     
     [YarnCommand("ReaWorried")]
     public void ReaIsWorried(){
         ReaWorried.SetActive(true);
+        ReaHappy.SetActive(false);
         ReaAngry.SetActive(false);
         ReaVisual.SetActive(false); }
-
+    
+    [YarnCommand("ReaHappy")]
+    public void ReaIsHappy(){
+        ReaHappy.SetActive(true);
+        ReaWorried.SetActive(false);
+        ReaAngry.SetActive(false);
+        ReaVisual.SetActive(false); }
+    
     [YarnCommand("ReaOrder")]
     public void DisplayReaOrder(){ReaOrder.SetActive(true);}
     
@@ -172,7 +199,14 @@ public class YarnCollection : MonoBehaviour
         BusyVisual.SetActive(true);
         BusyFour.SetActive(false); 
         BusyCircle.SetActive(false); }
-       [YarnCommand("BusyFour")]
+
+    [YarnCommand("BusyHide")]
+    public void HideBusy(){
+         BusyVisual.SetActive(false);
+        BusyFour.SetActive(false); 
+        BusyCircle.SetActive(false);}
+    
+    [YarnCommand("BusyFour")]
     public void EnableFour(){
         BusyFour.SetActive(true); 
         BusyCircle.SetActive(false);}   
@@ -190,6 +224,14 @@ public class YarnCollection : MonoBehaviour
     [YarnCommand("BusyBagelOrder")]
     public void DisplayBagelOrder(){BusyBagelOrder.SetActive(true);}
 
+    [YarnCommand("BusyTip")]
+    public void BusyTipped(){BTip = true; }
+    
+    [YarnCommand("BusyBigTip")]
+    public void BusyTippedBig(){BBigTip = true;}
+
+    [YarnCommand("Lars")]
+    public void LarsTriggered(){Lars = true;}
 //Puzzle Commands 
     [YarnCommand("TutorialPuzzle")]
     public void DisablePuzzleT()
@@ -212,5 +254,10 @@ public class YarnCollection : MonoBehaviour
         }
         else
         { hideButton = false; }
+    }
+    [YarnCommand("DoorSound")]
+    public void PlayDoorSound()
+    {
+         AudioManager.instance.PlayOneShot(FMODEvents.instance.DoorSound, this.transform.position);
     }
 }
