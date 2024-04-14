@@ -31,7 +31,10 @@ public class AudioManager : MonoBehaviour
   public bool MusicOn; 
   //private EventInstance noiseEventInstance; 
   public string Gain = "MusicGain"; 
-  public float parameterValue; 
+  public float parameterValue;
+
+  FMOD.Studio.EventInstance bMusic; 
+  FMOD.Studio.EventInstance AmbienceSounds; 
 
 //singleton. 
   private void Awake()
@@ -39,8 +42,11 @@ public class AudioManager : MonoBehaviour
     if (instance != null)
     {
         Debug.LogError("Found more than one audio manager in the scene."); 
+        Destroy(gameObject); 
+        return; 
     }
     instance = this; 
+    DontDestroyOnLoad(gameObject);
 
     eventInstances = new List<EventInstance>();
 
@@ -52,12 +58,14 @@ public class AudioManager : MonoBehaviour
 
   private void Start()
   {
-      if(MusicOn == false)
-      {
-        InitializeAmbience(FMODEvents.instance.BackgroundMusic); 
-        InitializeAmbience(FMODEvents.instance.BackgroundNoises); 
-        MusicOn = true; 
-      }
+      
+        bMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Background/BackgroundMusic"); 
+        bMusic.start(); 
+        AmbienceSounds = FMODUnity.RuntimeManager.CreateInstance("event:/Background/BakingSounds"); 
+        AmbienceSounds.start(); 
+        //InitializeAmbience(FMODEvents.instance.BackgroundMusic); 
+        //InitializeAmbience(FMODEvents.instance.BackgroundNoises); 
+  
 
   }
    private void Update() //Sets volume based on values that I can edit in editor. 
@@ -83,10 +91,16 @@ public class AudioManager : MonoBehaviour
     ambienceEventInstance = CreateInstance(ambienceEventReference); 
     ambienceEventInstance.start(); 
   }
-  public void SetAmbienceParameter (string parameterName, float parameterValue)
+ // public void SetAmbienceParameter (string parameterName, float parameterValue)
+ // {
+  //  ambienceEventInstance.setParameterByName(parameterName, parameterValue); 
+  //  Debug.Log("We quiet"); 
+  //}
+  public void PleaseStop()
   {
-    ambienceEventInstance.setParameterByName(parameterName, parameterValue); 
-    Debug.Log("We quiet"); 
-
+    bMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); 
+    AmbienceSounds.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); 
+  //  StopSound(FMODEvents.instance.BackgroundMusic); 
   }
+
 }

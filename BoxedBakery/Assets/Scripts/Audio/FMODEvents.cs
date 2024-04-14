@@ -8,8 +8,6 @@ public class FMODEvents : MonoBehaviour
    //SFX
    [field: Header("Item Dropped SFX")]
    [field: SerializeField] public EventReference ItemDropped {get; private set;} 
-   [field: Header("Item PickedUp SFX")]
-   [field: SerializeField] public EventReference ItemPickedUp {get; private set;} 
    [field: Header("Tip SFX")]
    [field: SerializeField] public EventReference CoinTipped {get; private set;} 
    [field: Header("Payment SFX")]
@@ -18,6 +16,8 @@ public class FMODEvents : MonoBehaviour
    [field: SerializeField] public EventReference ContinueButton {get; private set;} 
    [field: Header("Door Sound")]
    [field: SerializeField] public EventReference DoorSound {get; private set;} 
+     [field: Header("Phone Sound")]
+   [field: SerializeField] public EventReference PhoneSound {get; private set;} 
 
 //Music 
    [field: Header("Background Music")]

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; 
 using FMOD.Studio; 
-
+// Audio focused code from: https://www.youtube.com/watch?v=rcBHIOjZDpk 
 public class LoadScene : MonoBehaviour
 {
     public GameObject LidClosed; 

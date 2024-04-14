@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; 
-
+// Code from: https://www.youtube.com/watch?v=rcBHIOjZDpk 
 public class VolumeSlider : MonoBehaviour
 {
     private enum VolumeType 

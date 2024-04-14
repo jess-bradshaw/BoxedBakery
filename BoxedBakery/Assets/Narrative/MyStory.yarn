@@ -6,7 +6,7 @@ position: -463,-327
 ===
 title: Start
 tags:
-position: -266,-153
+position: -240,-327
 ---
 <<wait 1>>
 <<FadeIn EventSystem>>
@@ -26,14 +26,14 @@ position: -266,-153
 //    <<PackingView EventSystem>>
 //    <<wait 1>>
 //    <<jump TestingPacking>>
--> Testing Option -Puzzle 1
-    <<FadeOut EventSystem>>
-    <<PackingView EventSystem>>
-    <<wait 1>>
-    <<TutorialPuzzle EventSystem>>
-    <<BusyNoOrder EventSystem>>
-    <<Puzzle1 EventSystem>>
-    <<jump BusyPacking>>   
+//-> Testing Option -Puzzle 1
+ //   <<FadeOut EventSystem>>
+ //   <<PackingView EventSystem>>
+ //   <<wait 1>>
+ //   <<TutorialPuzzle EventSystem>>
+//    <<BusyNoOrder EventSystem>>
+//    <<Puzzle1 EventSystem>>
+ //   <<jump BusyPacking>>   
 <<ReaEnabled EventSystem>> //First time Rea is on screen. 
 <<ReaHappy EventSystem>>
 <i>Of course that familiar mess of blonde hair would sneak in today. </i>
@@ -89,7 +89,7 @@ Baxter: Hey Rea.
 ===
 
 title: Day1Smirk
-position: 83,-201
+position: -128,-116
 ---
 <i>I'll never tell her, but I'm glad she stopped by.</i> 
 Baxter: What can I get boxed up for you Sweet Buns? 
@@ -110,7 +110,7 @@ Rea: And make it official, I want to be the first paying customer of your own sh
 ===
 
 title: Day1Ignore
-position: -50,41
+position: -334,-118
 ---
 <<ReaWorried EventSystem>>
 <i>Why is she looking at me like that? She just wants free food again.</i>
@@ -124,11 +124,13 @@ Rea: Okay sorry.
 ===
 
 title: TestingPacking
+position: -242,69
 ---
 <<FadeIn EventSystem>>
 ===
 
 title: BaxKnowsBetter
+position: 22,66
 ---
 //Triggered when player puts the wrong item is the box. 
 <<hideButton EventSystem>>
@@ -141,6 +143,7 @@ title: BaxKnowsBetter
 ===
 
 title: Day1ReaOrderRight
+position: -251,264
 ---
 <i>One order complete.</i>
 <<FadeOut EventSystem>>
@@ -167,8 +170,8 @@ title: Day1ReaOrderRight
     <<ReaHappy EventSystem>>
     Rea: Yasss. Perfect! 
     <<ReaEnabled EventSystem>>
-    Rea: Beautiful new shop, delious cupcake. You got this!
-    Baxter: Thanks Rea, really appreciate it. Call me later alright? 
+    Rea: Beautiful new shop, delicious cupcake. You got this!
+    Baxter: Thanks Rea, really appreciate it. I'll call you later.
     Rea: Course, later! 
     //Track that Rea calls him. 
 <<endif>>
@@ -177,7 +180,7 @@ title: Day1ReaOrderRight
 <<ReaHide EventSystem>>
 <<FadeIn EventSystem>>
 <<TutorialPuzzle EventSystem>>
-<i> That cupcake has no chance of surviving the trip back to work.</i>
+<i> That cupcake has no chance of surviving the trip to work.</i>
 <i> I hope she's right.</i>
  <<FadeOut EventSystem>>
 <<wait  2>>
@@ -186,6 +189,7 @@ title: Day1ReaOrderRight
 ===
 
 title: Day1ReaOrderWrong
+position: -10,271
 ---
 <i>I don't count this as a real order. I make cupcakes all the time for her.</i>
 <<FadeOut EventSystem>>
@@ -231,10 +235,12 @@ title: Day1ReaOrderWrong
 
 
 title: Day1Business
+position: -138,492
 ---
 // ---------------------------------------------------------Busy Starts---------------------------------------------
 <i>There's been a steady flow since Rea left.</i>
-<i>It's good. We're doing alright. I just need to tuck a few things...</i>
+<i>It's been good. A few familiar faces. This shop might just survive.</i>
+<i> I just need to tuck a few things...</i>
 <<DoorSound EventSystem>>
 <<wait 1>>
 <<BusyEnabled EventSystem>>
@@ -297,7 +303,8 @@ Baxter: ...
     Baxter: ... 
     ???: Yeah. Check with her. 
     ???: This shop has Taiyaki, I'll grab some for her. 
-    <i>How did they spot that? They have barely looked around.</i>
+    <i>How did they spot that? </i>
+    <i>They have barely looked around.</i>
     ???: Yeah just some donuts for the team. 
     <i>Donuts..</i> 
     <i>Could have at least pointed to them.</i>
@@ -312,10 +319,12 @@ Baxter: ...
     <<jump BusyPacking>>
 ===
 title: BusyPacking
+position: -130,684
 ---
 <<FadeIn EventSystem>>
 ===
 title: BusyTooBusy
+position: 104,683
 ---
 //Triggered when player puts the wrong item is the box. 
 <<hideButton EventSystem>>
@@ -323,6 +332,7 @@ title: BusyTooBusy
 <<hideButton EventSystem>>
 ===
 title: BusyCorrectOrder
+position: -189,849
 ---
 <<FadeOut EventSystem>>
 <<CustomerView EventSystem>>
@@ -346,6 +356,7 @@ Baxter: That.. was something.
 ===
 
 title: BusyIncorrectOrder
+position: 39,853
 ---
 <<FadeOut EventSystem>>
 <<CustomerView EventSystem>>
@@ -374,13 +385,15 @@ Baxter: Well that was.. something.
 <<jump EndofDay1>>
 ===
 title: EndofDay1
+position: -163,1097
 ---
 <<Day1End EventSystem>>
 <<FadeIn EventSystem>>
 <i>Door locked just need to pack up anything that won't keep till tomorrow.</i> 
 //Check if rea is going to call or you call rea 
 <i>I should give Rea an update.</i>
-//phone dail sound 
+<<PhoneSound EventSystem>>
+<<wait 2>>
 Baxter: Rea? 
 Baxter: Yeah. Pretty successful grand opening. 
 <i>It was busy day. What should I tell her about.</i> 

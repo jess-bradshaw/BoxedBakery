@@ -64,11 +64,17 @@ public class YarnCollection : MonoBehaviour
     public bool P1;
     public GameObject Day1End; 
     public bool DoorSound; 
+    public bool PhoneSound; 
+    public float audioLevel; 
 
     [SerializeField] private string parameterName; 
     [SerializeField] private float parameterValue; 
 
     // Update is called once per frame
+    void Awake()
+    {
+        audioLevel = AudioManager.instance.musicVolume; 
+    }
     void Update()
     {
         //MainMenu Trigger 
@@ -110,10 +116,12 @@ public class YarnCollection : MonoBehaviour
         variableStorage.SetValue("$Day1End", Day1End); 
         //sounds
         variableStorage.SetValue("$DoorSound", DoorSound); 
+        variableStorage.SetValue("$PhoneSound", PhoneSound); 
     }
     [YarnCommand("MainMenu")]
     public void CallMainMenu()
     {
+        //AudioManager.instance.PleaseStop(); 
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu"); 
     }
 //Camera Changing Commands 
@@ -130,7 +138,7 @@ public class YarnCollection : MonoBehaviour
     {
         CustomerCamera.SetActive(true);
         PackingCamera.SetActive(false);
-        AudioManager.instance.musicVolume =  1;  
+        AudioManager.instance.musicVolume =  audioLevel;  
         ReaOrder.SetActive(false);
         BusyOrder.SetActive(false);
         BusyBagelOrder.SetActive(false);
@@ -283,9 +291,16 @@ public class YarnCollection : MonoBehaviour
         else
         { hideButton = false; }
     }
+    
+    //Sounds
     [YarnCommand("DoorSound")]
     public void PlayDoorSound()
     {
          AudioManager.instance.PlayOneShot(FMODEvents.instance.DoorSound, this.transform.position);
+    }
+    [YarnCommand("PhoneSound")]
+    public void PlayPhoneSound()
+    {
+         AudioManager.instance.PlayOneShot(FMODEvents.instance.PhoneSound, this.transform.position);
     }
 }
