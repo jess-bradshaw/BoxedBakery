@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{2363035a-b029-48c6-a23f-4f6c3ab4fb4f}">
+		<property name="assetPath">
+			<value>walk-174529.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>122.04000000000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{650cc0f3-d251-4c62-b163-a6f2f9153860}</destination>
+		</relationship>
+	</object>
+</objects>

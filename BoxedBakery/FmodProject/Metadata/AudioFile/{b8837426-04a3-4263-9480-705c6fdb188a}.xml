@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{b8837426-04a3-4263-9480-705c6fdb188a}">
+		<property name="color">
+			<value>Blue</value>
+		</property>
 		<property name="assetPath">
 			<value>213980__fenrirfangs__coin-clatter-2.wav</value>
 		</property>

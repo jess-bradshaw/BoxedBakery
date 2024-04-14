@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{63659c78-5864-4075-b5f9-7af46b59472d}">
+		<property name="color">
+			<value>Magenta</value>
+		</property>
+		<property name="assetPath">
+			<value>nostalgic-lofi-music-i-still-miss-you-195767.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>139.12799999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{650cc0f3-d251-4c62-b163-a6f2f9153860}</destination>
+		</relationship>
+	</object>
+</objects>

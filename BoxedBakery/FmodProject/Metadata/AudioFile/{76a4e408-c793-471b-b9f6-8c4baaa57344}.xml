@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{76a4e408-c793-471b-b9f6-8c4baaa57344}">
+		<property name="color">
+			<value>Yellow</value>
+		</property>
 		<property name="assetPath">
 			<value>727285__sachajulien__bread-is-singing-out-of-the-bread-oven.wav</value>
 		</property>

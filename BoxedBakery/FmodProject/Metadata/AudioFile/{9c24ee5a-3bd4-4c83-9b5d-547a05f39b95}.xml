@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{9c24ee5a-3bd4-4c83-9b5d-547a05f39b95}">
+		<property name="color">
+			<value>Yellow</value>
+		</property>
 		<property name="assetPath">
 			<value>241813__gruenebanane__teig-ausrollen.wav</value>
 		</property>

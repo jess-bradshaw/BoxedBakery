@@ -730,10 +730,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ItemDropped>k__BackingField:
     Guid:
-      Data1: 1156702879
-      Data2: 1220870263
-      Data3: -279942732
-      Data4: -668592356
+      Data1: -2104141407
+      Data2: 1166426865
+      Data3: 1384367748
+      Data4: 1549319918
     Path: event:/SFX/ItemDropped
   <CoinTipped>k__BackingField:
     Guid:
@@ -758,11 +758,11 @@ MonoBehaviour:
     Path: event:/SFX/ContinueButton
   <BackgroundMusic>k__BackingField:
     Guid:
-      Data1: 1365223306
-      Data2: 1166561904
-      Data3: -1860046666
-      Data4: -664300445
-    Path: event:/Background/RadioMusic
+      Data1: 82088388
+      Data2: 1297579833
+      Data3: 1804604080
+      Data4: -1418075026
+    Path: event:/Background/BackgroundMusic
   <BackgroundNoises>k__BackingField:
     Guid:
       Data1: 1348219556
@@ -770,6 +770,13 @@ MonoBehaviour:
       Data3: -267163511
       Data4: -1128365740
     Path: event:/Background/BakingSounds
+  <DoorSound>k__BackingField:
+    Guid:
+      Data1: -1938192955
+      Data2: 1108077860
+      Data3: -1715162236
+      Data4: -846894168
+    Path: event:/SFX/Door
 --- !u!1 &1436097873
 GameObject:
   m_ObjectHideFlags: 0

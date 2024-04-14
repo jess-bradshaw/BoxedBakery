@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{6992fa7a-e7ec-4abe-9dd5-58504caf7733}">
+		<property name="color">
+			<value>Magenta</value>
+		</property>
 		<property name="assetPath">
 			<value>687908__deadrobotmusic__nylon-guitar-percussion-loop-128bpm.wav</value>
 		</property>

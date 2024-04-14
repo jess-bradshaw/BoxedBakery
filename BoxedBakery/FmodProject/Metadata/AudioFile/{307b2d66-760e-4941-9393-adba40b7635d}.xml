@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{307b2d66-760e-4941-9393-adba40b7635d}">
+		<property name="color">
+			<value>Magenta Light 1</value>
+		</property>
 		<property name="assetPath">
 			<value>692866__souljaunit__dead-robot-music-surfy-vibe-soulja-unit-edit-acoustic-version.ogg</value>
 		</property>
