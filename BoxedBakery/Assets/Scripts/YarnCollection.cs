@@ -17,6 +17,7 @@ public class YarnCollection : MonoBehaviour
     public GameObject MainMenu;
     public bool hideButton; 
     public InMemoryVariableStorage variableStorage;
+    //public AudioManager MusicVolumne; 
 
 //fade in and out 
     public CanvasGroup canvasGroup; 
@@ -41,6 +42,10 @@ public class YarnCollection : MonoBehaviour
         public GameObject BusyFour; 
         public GameObject BusyCircle; 
         public bool BusyHide;
+        public GameObject Bagels; 
+        public GameObject Donuts; 
+        public GameObject BackupDonuts; 
+        public bool BusyNoOrder; 
     //Lars
         public bool Lars; 
 //Tipping
@@ -57,6 +62,7 @@ public class YarnCollection : MonoBehaviour
     public bool TutorialP;
     public GameObject Puzzle1; 
     public bool P1;
+    public GameObject Day1End; 
     public bool DoorSound; 
 
     [SerializeField] private string parameterName; 
@@ -83,12 +89,13 @@ public class YarnCollection : MonoBehaviour
         variableStorage.SetValue("$ReaHappy", ReaHappy);
         //Busy
         variableStorage.SetValue("$BusyEnabled", BusyEnabled);
-         variableStorage.SetValue("$BusyHide", BusyHide);
+        variableStorage.SetValue("$BusyHide", BusyHide);
         variableStorage.SetValue("$BusyFour", BusyFour);
         variableStorage.SetValue("$BusyCircle", BusyCircle);
         variableStorage.SetValue("$BusyOrder", BusyOrder);
         variableStorage.SetValue("$BusyDonutOrder", BusyDonutOrder);
         variableStorage.SetValue("$BusyBagelOrder", BusyBagelOrder);
+        variableStorage.SetValue("$BusyNoOrder", BusyNoOrder);
         //Lars 
         variableStorage.SetValue("$Lars", Lars);
         //tipping
@@ -100,7 +107,8 @@ public class YarnCollection : MonoBehaviour
         variableStorage.SetValue("$TutorialPuzzle", TutorialP);
         variableStorage.SetValue("$Puzzle1", P1);
         variableStorage.SetValue("$hideButton", hideButton); 
-
+        variableStorage.SetValue("$Day1End", Day1End); 
+        //sounds
         variableStorage.SetValue("$DoorSound", DoorSound); 
     }
     [YarnCommand("MainMenu")]
@@ -114,7 +122,7 @@ public class YarnCollection : MonoBehaviour
     {
         PackingCamera.SetActive(true);
         CustomerCamera.SetActive(false);
-        AudioManager.instance.SetAmbienceParameter(parameterName, 1); 
+        AudioManager.instance.musicVolume =  0.3f;  
     }
     
     [YarnCommand("CustomerView")]
@@ -122,12 +130,13 @@ public class YarnCollection : MonoBehaviour
     {
         CustomerCamera.SetActive(true);
         PackingCamera.SetActive(false);
-        AudioManager.instance.SetAmbienceParameter(parameterName, 0); 
+        AudioManager.instance.musicVolume =  1;  
         ReaOrder.SetActive(false);
         BusyOrder.SetActive(false);
         BusyBagelOrder.SetActive(false);
         BusyDonutOrder.SetActive(false);
     }
+    
 //Fades Commands 
     [YarnCommand("FadeIn")]
     public IEnumerator FadeInTransition ()
@@ -224,11 +233,20 @@ public class YarnCollection : MonoBehaviour
     [YarnCommand("BusyOrder")]
     public void DisplayBusyOrder(){
         BusyOrder.SetActive(true); 
-        BusyAddOn.SetActive(true);}
+        BusyAddOn.SetActive(true);
+        Donuts.SetActive(true);}
+    [YarnCommand("BusyNoOrder")]
+    public void DisplayBusyFood(){
+        Bagels.SetActive(true);
+        BackupDonuts.SetActive(true);}  
     [YarnCommand("BusyDonutOrder")]
-    public void DisplayDonutOrder(){BusyDonutOrder.SetActive(true);}
+    public void DisplayDonutOrder(){
+        BusyDonutOrder.SetActive(true);
+        Donuts.SetActive(true);
+        }
     [YarnCommand("BusyBagelOrder")]
-    public void DisplayBagelOrder(){BusyBagelOrder.SetActive(true);}
+    public void DisplayBagelOrder(){BusyBagelOrder.SetActive(true);
+        Bagels.SetActive(true);}
 
     [YarnCommand("BusyTip")]
     public void BusyTipped(){BTip = true; }
@@ -242,13 +260,17 @@ public class YarnCollection : MonoBehaviour
     [YarnCommand("TutorialPuzzle")]
     public void DisablePuzzleT()
     {
-        TutorialPuzzle.SetActive(false);
-        Debug.Log("We should disable puzzle"); 
+        TutorialPuzzle.SetActive(false); 
     }
      [YarnCommand("Puzzle1")]
     public void EnablePuzzle1()
     {
         Puzzle1.SetActive(true);
+    }
+    [YarnCommand("Day1End")]
+     public void EnableDay1End()
+    {
+        Day1End.SetActive(true);
     }
 
     [YarnCommand("hideButton")]

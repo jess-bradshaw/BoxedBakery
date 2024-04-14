@@ -53,7 +53,7 @@
 			<destination>{26d0446a-bf50-4866-9242-3cdcb1d5d8fa}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{b1b65ff8-e644-4db1-8c68-67b56dae03b1}</destination>
+			<destination>{6923dccd-3fc8-4518-be64-47df42883b5b}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{7f727893-034b-4d9f-8f5a-f575d14aa693}" />
@@ -93,7 +93,7 @@
 	<object class="MixerBusPanner" id="{26d0446a-bf50-4866-9242-3cdcb1d5d8fa}" />
 	<object class="SingleSound" id="{354e34e9-5f37-406d-95e7-10f13baa97db}">
 		<property name="length">
-			<value>21</value>
+			<value>7.6000000000000005</value>
 		</property>
 		<property name="looping">
 			<value>true</value>
@@ -103,9 +103,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{02370de2-14f8-4755-b8d4-a434a4786cb3}">
-		<property name="volume">
-			<value>-9</value>
-		</property>
 		<property name="name">
 			<value>Audio 2</value>
 		</property>
@@ -124,7 +121,7 @@
 			<value>0</value>
 		</property>
 		<property name="length">
-			<value>10.800000000000001</value>
+			<value>7.6000000000000005</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{e312c5d7-d93b-4ab8-a3de-1be2d2dd7bbf}</destination>

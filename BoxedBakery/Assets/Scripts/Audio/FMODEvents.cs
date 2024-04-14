@@ -27,6 +27,8 @@ public class FMODEvents : MonoBehaviour
    
 
     public static FMODEvents instance {get; private set;}
+
+   
    private void Awake()
    {
     if (instance != null)

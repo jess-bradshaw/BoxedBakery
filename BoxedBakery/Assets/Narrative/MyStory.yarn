@@ -8,39 +8,40 @@ title: Start
 tags:
 position: -266,-153
 ---
+<<wait 1>>
 <<FadeIn EventSystem>>
 <<DoorSound EventSystem>>
-<<wait 1>>
-<i>Oh no, was that the door? But I'm not ready.</i>
+<i>Oh no, was that the door? I'm not ready.</i>
 -> "Hello w-welcome!"
     ???: Don't be so nervous Bax, it's just me. 
 -> "Welcome to my bakery what can I get you? 
     ???: Clear, warm, and an open ended question.. 
-    ???: Seems you have been studying, Bax. 
+    ???: Seems you have been practicing, Bax. 
 -> ... 
     ???: Bax.. you might want to greet customers. 
-    ???: Not sure it's a great first impression on your grand opening. 
+    ???: Not sure it's a great first impression.  
 //EDIT THIS OUT LATER --------------------------
 //-> Testing Option -Tutorial puzzle
 //    <<FadeOut EventSystem>>
 //    <<PackingView EventSystem>>
 //    <<wait 1>>
 //    <<jump TestingPacking>>
-//-> Testing Option -Puzzle 1
- //   <<FadeOut EventSystem>>
- //   <<PackingView EventSystem>>
- //   <<wait 1>>
- //   <<TutorialPuzzle EventSystem>>
- //   <<Puzzle1 EventSystem>>
- //   <<jump BusyPacking>>   
+-> Testing Option -Puzzle 1
+    <<FadeOut EventSystem>>
+    <<PackingView EventSystem>>
+    <<wait 1>>
+    <<TutorialPuzzle EventSystem>>
+    <<BusyNoOrder EventSystem>>
+    <<Puzzle1 EventSystem>>
+    <<jump BusyPacking>>   
 <<ReaEnabled EventSystem>> //First time Rea is on screen. 
 <<ReaHappy EventSystem>>
 <i>Of course that familiar mess of blonde hair would sneak in today. </i>
- <<ReaEnabled EventSystem>>
-Baxter: Oh hey Rea. 
+<<ReaEnabled EventSystem>>
+Baxter: Hey Rea. 
 -> Can I get you something before work?
-    Rea: Sure, but maybe rephrase that as 'What can I get you?' 
-    Rea: That way you get the customer talking. 
+    Rea: Good, but maybe rephrase that as 'What can I get you?' 
+    Rea: Get the customer talking. 
     Baxter: Aye.
     Baxter: Rea you know I've done this before. 
     Rea: I know. Just reminding you. 
@@ -49,24 +50,27 @@ Baxter: Oh hey Rea.
     Rea: This is <b>your</b> place, you can do what you want.  
     <<ReaHappy EventSystem>>
     Rea: Smile, wink, you know... be you. 
-     <<ReaEnabled EventSystem>>
-     <<ReaTip EventSystem>>
+    <<ReaEnabled EventSystem>>
+    <<ReaTip EventSystem>>
     <<jump Day1Smirk>>
 -> Move you are blocking the door what if a <b>real</b> customer comes in?
     <<ReaWorried EventSystem>>
     Rea: I get that today is stressful but even for you that seemed harsh.
     Rea: Bax.. you doing okay? 
-    -> Baxter: Yeah.. fine. Whatever just move. 
-        Rea: Umm okay. Can I get my regular? //She tells him but he doesn't write down the order. 
+    -> Baxter: Fine. Whatever just move. 
+        Rea: Umm okay. I wanted to support you on the shop's first day.
+        Baxter: ...
+        Rea: C-can I get my regular? //She tells him but he doesn't write down the order. 
         Baxter: Fine. Just move. 
-        <i>She shouldn't have come by, I don't need this distraction.</i>  
+        <i>She shouldn't have come by, I don't need her here.</i>  
         <<set $Rea_Angry += 2>> 
         <<jump Day1Ignore>>
-    -> Baxter: Oh sorry, I'm anxious about today.
+    -> Baxter: Sorry, I'm anxious about today.
         <<ReaEnabled EventSystem>>
         Rea: It's okay, that's why I wanted to visit before it got busy. 
         Rea: The place looks great, you look great. 
         <<ReaHappy EventSystem>>
+        Baxter: Thanks Rea.
         Rea: You got this. 
         Rea: Plus you can get your first customer out of the way.
          <<ReaEnabled EventSystem>> 
@@ -77,7 +81,7 @@ Baxter: Oh hey Rea.
     Rea: Umm the shop looks nice. 
     Baxter: ...
      <<ReaEnabled EventSystem>>
-    Rea: I thought I'd come visit on your first day.
+    Rea: I thought I'd come support your grand opening.
     Baxter: ... 
     <<ReaWorried EventSystem>>
     Rea: S-sorry could I.. get my regular?
@@ -88,9 +92,9 @@ title: Day1Smirk
 position: 83,-201
 ---
 <i>I'll never tell her, but I'm glad she stopped by.</i> 
-Baxter: What can I get boxed up for you sweet buns? 
- <<ReaHappy EventSystem>>
-Rea: Oh boy. I haven't heard that nickname in years. 
+Baxter: What can I get boxed up for you Sweet Buns? 
+<<ReaHappy EventSystem>>
+Rea: Oh boy. You haven't called me that in years. 
 <<ReaEnabled EventSystem>>
 Rea: You know my go to.
 Baxter: One strawberry cupcake coming up. 
@@ -110,7 +114,9 @@ position: -50,41
 ---
 <<ReaWorried EventSystem>>
 <i>Why is she looking at me like that? She just wants free food again.</i>
-Rea: You know you could still write.. nevermind. 
+Rea: You know you could still.. write..
+Baxter: ... 
+Rea: Okay sorry. 
 <<FadeOut EventSystem>>
 <<PackingView EventSystem>>
 <<wait 1>>
@@ -146,16 +152,22 @@ title: Day1ReaOrderRight
     <<ReaWorried EventSystem>>
     Rea: Thanks Bax, I hope I didn't throw you off coming in. 
     Baxter: Nah sorry about earlier.
-    Baxter: Nervous about the grand opening. Do you think people will come?
+    Baxter: Been so focused getting ready. I didn't really sleep much last night. 
+    Baxter: I couldn't figure out what items to offer, then I made too much.
+    Baxter: Or maybe not enough? I'm not sure people will even show up. 
     <<ReaEnabled EventSystem>>
-    Rea: Of course! Deep breath you got this. Call me later if you want. 
+    Rea: Of course they will! It's not like they don't know your skills. 
+    Rea: Just a change of location. Your own location. 
+    Baxter: True.. but what if they don't?
+    Rea: Deep breath, they will. 
+    Rea: You got this. Call me later if you want. 
     Baxter: Sounds good, have a good day at work. 
     //Track that Bax can call her
 <<else>>
     <<ReaHappy EventSystem>>
-    Rea: Yasss. 
+    Rea: Yasss. Perfect! 
     <<ReaEnabled EventSystem>>
-    Rea: Beautiful new shop, perfectly boxed cupcake. You got this! 
+    Rea: Beautiful new shop, delious cupcake. You got this!
     Baxter: Thanks Rea, really appreciate it. Call me later alright? 
     Rea: Course, later! 
     //Track that Rea calls him. 
@@ -228,7 +240,6 @@ title: Day1Business
 <<BusyEnabled EventSystem>>
 ???: No that won't work, we can't move the deadline. 
 ???: No.. No. I can't. 
-???: <b>No.</b> Stop. 
 Baxter: Welcome-
 ???: I said NO.
 ???: Mmhm. That's fine. 
@@ -275,6 +286,7 @@ Baxter: ...
     <i> I guess I'll pick whatever then.</i>  
     <<FadeOut EventSystem>>
     <<PackingView EventSystem>>
+    <<BusyNoOrder EventSystem>>
     <<wait 1>>
     <<Puzzle1 EventSystem>>
     <<jump BusyPacking>>
@@ -330,7 +342,7 @@ Baxter: That.. was something.
 <i>Donuts.. honestly I wish my old boss made us donuts.</i> 
 <<FadeOut EventSystem>>
 <<wait 1>>
-<<MainMenu EventSystem>>
+<<jump EndofDay1>>
 ===
 
 title: BusyIncorrectOrder
@@ -357,6 +369,40 @@ title: BusyIncorrectOrder
 Baxter: Well that was.. something. 
 <i>I wish they would have just stopped for a moment to tell me what they wanted.</i> 
 <i>I'll do better with the next one.</i> 
+<<FadeOut EventSystem>>
+<<wait 1>>
+<<jump EndofDay1>>
+===
+title: EndofDay1
+---
+<<Day1End EventSystem>>
+<<FadeIn EventSystem>>
+<i>Door locked just need to pack up anything that won't keep till tomorrow.</i> 
+//Check if rea is going to call or you call rea 
+<i>I should give Rea an update.</i>
+//phone dail sound 
+Baxter: Rea? 
+Baxter: Yeah. Pretty successful grand opening. 
+<i>It was busy day. What should I tell her about.</i> 
+-> "Some person wouldn't get off their phone."
+    Baxter: Yeah. I know. It was a bit frustrating. 
+    //add more in maybe about business card vs not 
+-> "Only a few strawberry cupcakes left."
+    Baxter: Ha, they will keep till tomorrow. 
+    Baxter: You're welcome to come pay for another.. 
+-> "Thanks for coming by earlier"
+    <<if $Rea_Angry  > 1>> 
+     Baxter: I'm sorry for how I treated you. 
+     Baxter: I know you were trying to help. 
+     Baxter: I shouldn't have lashed out like that. 
+    <<else>> 
+     Baxter: It helped. 
+     Baxter: I wouldn't say no to a regular every morning.. 
+     Baxter: Haha okay fine, a few freebies here and there. 
+    <<endif>>
+Baxter: Yeah everything is closed up for the day. 
+Baxter: A bit of prep for tomorrow then yeah I'll come over.
+Baxter: Mmhm. See you soon. 
 <<FadeOut EventSystem>>
 <<wait 1>>
 <<MainMenu EventSystem>>
