@@ -10,7 +10,8 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Trushdex
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 0268e4ce29d09f3449dbd9fbdfebb463, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

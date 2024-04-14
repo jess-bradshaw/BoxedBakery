@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity; 
+using FMOD.Studio; 
 
 [RequireComponent(typeof(CanvasGroup))]
 public class YarnCollection : MonoBehaviour
@@ -58,6 +59,9 @@ public class YarnCollection : MonoBehaviour
     public bool P1;
     public bool DoorSound; 
 
+    [SerializeField] private string parameterName; 
+    [SerializeField] private float parameterValue; 
+
     // Update is called once per frame
     void Update()
     {
@@ -110,6 +114,7 @@ public class YarnCollection : MonoBehaviour
     {
         PackingCamera.SetActive(true);
         CustomerCamera.SetActive(false);
+        AudioManager.instance.SetAmbienceParameter(parameterName, 1); 
     }
     
     [YarnCommand("CustomerView")]
@@ -117,6 +122,7 @@ public class YarnCollection : MonoBehaviour
     {
         CustomerCamera.SetActive(true);
         PackingCamera.SetActive(false);
+        AudioManager.instance.SetAmbienceParameter(parameterName, 0); 
         ReaOrder.SetActive(false);
         BusyOrder.SetActive(false);
         BusyBagelOrder.SetActive(false);

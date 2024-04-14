@@ -184,11 +184,12 @@ title: Day1ReaOrderWrong
 <<if $Rea_Angry > 1>>
 <<ReaAngry EventSystem>>
     Rea: Keep it. 
-    Rea: I was just trying to help but it seems you can't even remember your best friend's order.
-     <<FadeOut EventSystem>>
+    Rea: I was just trying to help.
+    Rea: Seems you can't even remember your best friend's order.
+    <<FadeOut EventSystem>>
     <<DoorSound EventSystem>>
     <<ReaHide EventSystem>>
-      <<wait 1>>
+    <<wait 1>>
     <<FadeIn EventSystem>>
     Baxter: Oh.. 
         -> <i>I didn't need her storming in here anyways.</i>
@@ -283,11 +284,11 @@ Baxter: ...
     ???: Sure. I know she's busy.. she's our expert. 
     Baxter: ... 
     ???: Yeah. Check with her. 
-    ???: Oh they have Taiyaki, I'll grab some for her. 
-    <i> Oh so they did look around..</i>
+    ???: This shop has Taiyaki, I'll grab some for her. 
+    <i>How did they spot that? They have barely looked around.</i>
     ???: Yeah just some donuts for the team. 
-    <i> Donuts..</i> 
-    <i> They could have at least pointed to them.</i>
+    <i>Donuts..</i> 
+    <i>Could have at least pointed to them.</i>
     <<BusyBigTip EventSystem>>
     <<set $Lars = true>>
     <<Lars EventSystem>>

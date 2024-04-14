@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; 
+using FMOD.Studio; 
 
 public class LoadScene : MonoBehaviour
 {
@@ -24,5 +25,6 @@ public class LoadScene : MonoBehaviour
        public void LoadMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu"); 
+       
     }
 }

@@ -8,7 +8,9 @@ public class AudioManager : MonoBehaviour
 {
   public static AudioManager instance {get; private set;}
 
-  private EventInstance ambienceEventInstance; 
+  public EventInstance ambienceEventInstance; 
+   public EventInstance BackgroundMusic; 
+  //public bool PlayMusic; 
   public bool MusicOn; 
   //private EventInstance noiseEventInstance; 
 
@@ -24,7 +26,11 @@ public class AudioManager : MonoBehaviour
 
   private void Start()
   {
-    if (MusicOn == false) {
+    
+       // PLAYBACK_STATE playbackState; 
+      //  BackgroundMusic.getPlaybackState(out playbackState);  
+    //if (playbackState.Equals(PLAYBACK_STATE.STOPPED)) {
+      if(MusicOn == false){
       InitializeAmbience(FMODEvents.instance.BackgroundMusic); 
       InitializeAmbience(FMODEvents.instance.BackgroundNoises); 
       MusicOn = true; 
@@ -32,10 +38,9 @@ public class AudioManager : MonoBehaviour
 
   }
 
-  public void PlayOneShot(EventReference sound, Vector3 worldPos)
+  public void PlayOneShot(EventReference sound, Vector3 worldPos) //This is used to play one off music clips
   {
     RuntimeManager.PlayOneShot(sound, worldPos); 
-
   }
 
   public EventInstance CreateInstance(EventReference eventReference)
@@ -47,5 +52,11 @@ public class AudioManager : MonoBehaviour
   {
     ambienceEventInstance = CreateInstance(ambienceEventReference); 
     ambienceEventInstance.start(); 
+  }
+  public void SetAmbienceParameter (string parameterName, float parameterValue)
+  {
+    ambienceEventInstance.setParameterByName(parameterName, parameterValue); 
+    Debug.Log("We quiet"); 
+
   }
 }

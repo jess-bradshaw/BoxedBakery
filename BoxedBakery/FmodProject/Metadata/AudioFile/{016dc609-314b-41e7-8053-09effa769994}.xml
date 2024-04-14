@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{016dc609-314b-41e7-8053-09effa769994}">
+		<property name="assetPath">
+			<value>be-free-acoustic-folk-172341.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>123.21599999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{650cc0f3-d251-4c62-b163-a6f2f9153860}</destination>
+		</relationship>
+	</object>
+</objects>
