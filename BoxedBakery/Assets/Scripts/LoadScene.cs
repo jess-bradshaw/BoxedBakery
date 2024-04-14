@@ -5,20 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-      
-    }
+    public GameObject LidClosed; 
+    public GameObject LidOpen; 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void LoadLevel1()
     {
+       AudioManager.instance.PlayOneShot(FMODEvents.instance.ContinueButton, this.transform.position);
+        LidClosed.SetActive(true);
+        LidOpen.SetActive(false); 
         UnityEngine.SceneManagement.SceneManager.LoadScene("Level_One"); 
     }
 

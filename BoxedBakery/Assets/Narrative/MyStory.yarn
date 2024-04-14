@@ -21,11 +21,11 @@ position: -266,-153
     ???: Bax.. you might want to greet customers. 
     ???: Not sure it's a great first impression on your grand opening. 
 //EDIT THIS OUT LATER --------------------------
--> Testing Option -Tutorial puzzle
-    <<FadeOut EventSystem>>
-    <<PackingView EventSystem>>
-    <<wait 1>>
-    <<jump TestingPacking>>
+//-> Testing Option -Tutorial puzzle
+//    <<FadeOut EventSystem>>
+//    <<PackingView EventSystem>>
+//    <<wait 1>>
+//    <<jump TestingPacking>>
 //-> Testing Option -Puzzle 1
  //   <<FadeOut EventSystem>>
  //   <<PackingView EventSystem>>
@@ -168,7 +168,7 @@ title: Day1ReaOrderRight
 <i> That cupcake has no chance of surviving the trip back to work.</i>
 <i> I hope she's right.</i>
  <<FadeOut EventSystem>>
-<<wait  3>>
+<<wait  2>>
 <<FadeIn EventSystem>>
 <<jump Day1Business>>
 ===
@@ -210,7 +210,7 @@ title: Day1ReaOrderWrong
     <i> Now what was I do before she came in?</i> 
 <<endif>>
 <<FadeOut EventSystem>>
-<<wait  3>>
+<<wait  2>>
 <<FadeIn EventSystem>>
 <<TutorialPuzzle EventSystem>>
 <<jump Day1Business>>
