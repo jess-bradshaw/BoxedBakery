@@ -15,10 +15,10 @@ position: -240,-327
 -> "Hello w-welcome!"
     ???: Don't be so nervous Bax, it's just me. 
 -> "Welcome to my bakery what can I get you? 
-    ???: Clear, warm, and an open ended question.. 
+    ???: Clear, warm, and an open ended question... 
     ???: Seems you have been practicing, Bax. 
 -> ... 
-    ???: Bax.. you might want to greet customers. 
+    ???: Bax... you might want to greet customers. 
     ???: Not sure it's a great first impression.  
 //EDIT THIS OUT LATER --------------------------
 //-> Testing Option -Tutorial puzzle
@@ -45,7 +45,7 @@ Baxter: Hey Rea.
     Baxter: Aye.
     Baxter: Rea you know I've done this before. 
     Rea: I know. Just reminding you. 
-    Baxter: Feels different today..
+    Baxter: Feels different today...
     Rea: It is <b>different</b>. 
     Rea: This is <b>your</b> place, you can do what you want.  
     <<ReaHappy EventSystem>>
@@ -56,7 +56,7 @@ Baxter: Hey Rea.
 -> Move you are blocking the door what if a <b>real</b> customer comes in?
     <<ReaWorried EventSystem>>
     Rea: I get that today is stressful but even for you that seemed harsh.
-    Rea: Bax.. you doing okay? 
+    Rea: Bax... you doing okay? 
     -> Baxter: Fine. Whatever just move. 
         Rea: Umm okay. I wanted to support you on the shop's first day.
         Baxter: ...
@@ -84,7 +84,7 @@ Baxter: Hey Rea.
     Rea: I thought I'd come support your grand opening.
     Baxter: ... 
     <<ReaWorried EventSystem>>
-    Rea: S-sorry could I.. get my regular?
+    Rea: S-sorry could I... get my regular?
     <<jump Day1Ignore>> // gets no info because you dont ask. 
 ===
 
@@ -114,7 +114,7 @@ position: -334,-118
 ---
 <<ReaWorried EventSystem>>
 <i>Why is she looking at me like that? She just wants free food again.</i>
-Rea: You know you could still.. write..
+Rea: You know you could still... write...
 Baxter: ... 
 Rea: Okay sorry. 
 <<FadeOut EventSystem>>
@@ -135,9 +135,9 @@ position: 22,66
 //Triggered when player puts the wrong item is the box. 
 <<hideButton EventSystem>>
 <<if $Rea_Angry > 1>>
-    Rea: That isn't.. nevermind. 
+    Rea: That isn't... nevermind. 
 <<else>>
-    Rea: Umm Bax, my regular is a bit more colourful.. 
+    Rea: Umm Bax, my regular is a bit more colourful... 
 <<endif>>
 <<hideButton EventSystem>>
 ===
@@ -161,7 +161,7 @@ position: -251,264
     <<ReaEnabled EventSystem>>
     Rea: Of course they will! It's not like they don't know your skills. 
     Rea: Just a change of location. Your own location. 
-    Baxter: True.. but what if they don't?
+    Baxter: True... but what if they don't?
     Rea: Deep breath, they will. 
     Rea: You got this. Call me later if you want. 
     Baxter: Sounds good, have a good day at work. 
@@ -207,7 +207,7 @@ position: -10,271
     <<ReaHide EventSystem>>
     <<wait 1>>
     <<FadeIn EventSystem>>
-    Baxter: Oh.. 
+    Baxter: Oh... 
         -> <i>I didn't need her storming in here anyways.</i>
         -> <i>I need a moment.</i>
             <i>I feel bad. I know she was trying to help.</i>
@@ -216,7 +216,7 @@ position: -10,271
                 //Track that Bax will call her. 
     Baxter: I should put that back before someone else comes in. 
 <<else>>
-    Rea: Umm thanks Bax, I.. hope your day goes smoothly. 
+    Rea: Umm thanks Bax, I... hope your day goes smoothly. 
     Rea: S-sorry if me stopping in caused stress. Good luck today, it will be good.
     Baxter: ...  
     <<FadeOut EventSystem>>
@@ -245,7 +245,7 @@ position: -138,492
 <<wait 1>>
 <<BusyEnabled EventSystem>>
 ???: No that won't work, we can't move the deadline. 
-???: No.. No. I can't. 
+???: No... No. I can't. 
 Baxter: Welcome-
 ???: I said NO.
 ???: Mmhm. That's fine. 
@@ -255,7 +255,7 @@ Baxter: Welcome-
     <<BusyTip EventSystem>>
     ???: Ahh yeah move it to then. 
     ???: Just move the other one instead.
--> <i>I should wait until their off the phone.</i>
+-> <i>I should wait until they're off the phone.</i>
     <<BusyTip EventSystem>>
     Baxter: ...
     ???: I'll take my call then. 
@@ -263,7 +263,7 @@ Baxter: Welcome-
     ???: Just move the other one instead. 
 ???: Yeah, okay. No, I'm out grabbing the team food.
 Baxter: ... 
-???: Nah, some new shop.. don't know.
+???: Nah, some new shop... don't know.
 <<BusyFour EventSystem>>
 <i>Why are they holding up four fingers?</i> 
 <<BusyCircle EventSystem>>
@@ -297,16 +297,16 @@ Baxter: ...
     <<Puzzle1 EventSystem>>
     <<jump BusyPacking>>
 -> <i>I should wait until they give me full attention.</i>
-    ???: ...Have Lars look into that..
+    ???: ...Have Lars look into that...
     Baxter: ...
-    ???: Sure. I know she's busy.. she's our expert. 
+    ???: Sure. I know she's busy... she's our expert. 
     Baxter: ... 
     ???: Yeah. Check with her. 
     ???: This shop has Taiyaki, I'll grab some for her. 
     <i>How did they spot that? </i>
     <i>They have barely looked around.</i>
     ???: Yeah just some donuts for the team. 
-    <i>Donuts..</i> 
+    <i>Donuts...</i> 
     <i>Could have at least pointed to them.</i>
     <<BusyBigTip EventSystem>>
     <<set $Lars = true>>
@@ -328,7 +328,7 @@ position: 104,683
 ---
 //Triggered when player puts the wrong item is the box. 
 <<hideButton EventSystem>>
-???: Move that to the next day.. No, the other one.. Yeah that meeting... 
+???: Move that to the next day... No, the other one... Yeah that meeting.... 
 <<hideButton EventSystem>>
 ===
 title: BusyCorrectOrder
@@ -347,9 +347,9 @@ position: -189,849
 <<wait 1>>
 <<BusyHide EventSystem>>
 <<FadeIn EventSystem>>
-Baxter: That.. was something.
+Baxter: That... was something.
 <i>At least they might come back?</i> 
-<i>Donuts.. honestly I wish my old boss made us donuts.</i> 
+<i>Donuts... honestly I wish my old boss made us donuts.</i> 
 <<FadeOut EventSystem>>
 <<wait 1>>
 <<jump EndofDay1>>
@@ -366,7 +366,8 @@ position: 39,853
 ???: Ugh, nah the shop messed it up. 
 ???: I don't have time for this, team gets what they get.
 <<if $Lars == false>>
-???: Get Kiba to grabs something for Lars on his way in. We want her on our side. 
+???: Get Kiba to grab something for Lars on his way in.
+???: We want her on our side. 
 <<else>>
 ???: At least they got the Taiyaki right.
 ???: They look alright I guess.  
@@ -377,7 +378,7 @@ position: 39,853
 <<wait 1>>
 <<BusyHide EventSystem>>
 <<FadeIn EventSystem>>
-Baxter: Well that was.. something. 
+Baxter: Well that was... something. 
 <i>I wish they would have just stopped for a moment to tell me what they wanted.</i> 
 <i>I'll do better with the next one.</i> 
 <<FadeOut EventSystem>>
@@ -396,21 +397,21 @@ position: -163,1097
 <<wait 2>>
 Baxter: Rea? 
 Baxter: Yeah. Pretty successful grand opening. 
-<i>It was busy day. What should I tell her about.</i> 
+<i>It was a busy day. What should I tell her about?</i> 
 -> "Some person wouldn't get off their phone."
     Baxter: Yeah. I know. It was a bit frustrating. 
     //add more in maybe about business card vs not 
 -> "Only a few strawberry cupcakes left."
     Baxter: Ha, they will keep till tomorrow. 
-    Baxter: You're welcome to come pay for another.. 
--> "Thanks for coming by earlier"
+    Baxter: You're welcome to come pay for another... 
+-> "Thanks for coming by earlier."
     <<if $Rea_Angry  > 1>> 
      Baxter: I'm sorry for how I treated you. 
      Baxter: I know you were trying to help. 
      Baxter: I shouldn't have lashed out like that. 
     <<else>> 
      Baxter: It helped. 
-     Baxter: I wouldn't say no to a regular every morning.. 
+     Baxter: I wouldn't say no to a regular every morning... 
      Baxter: Haha okay fine, a few freebies here and there. 
     <<endif>>
 Baxter: Yeah everything is closed up for the day. 
