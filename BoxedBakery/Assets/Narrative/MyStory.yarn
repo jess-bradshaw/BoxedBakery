@@ -20,12 +20,12 @@ position: -240,-327
 -> ... 
     ???: Bax... you might want to greet customers. 
     ???: Not sure it's a great first impression.  
-//EDIT THIS OUT LATER --------------------------
+//EDIT THIS OUT LATER ------------------------------------
 //-> Testing Option -Tutorial puzzle
 //    <<FadeOut EventSystem>>
 //    <<PackingView EventSystem>>
 //    <<wait 1>>
-//    <<jump TestingPacking>>
+//    <<jump Packing>>
 //-> Testing Option -Puzzle 1
  //   <<FadeOut EventSystem>>
  //   <<PackingView EventSystem>>
@@ -33,7 +33,22 @@ position: -240,-327
  //   <<TutorialPuzzle EventSystem>>
 //    <<BusyNoOrder EventSystem>>
 //    <<Puzzle1 EventSystem>>
- //   <<jump BusyPacking>>   
+ //   <<jump Packing>> 
+// -> Testing Option -Kid
+   // <<set $Rea_NoCake += 1>>  
+  //  <<FadeOut EventSystem>>
+    //<<TutorialPuzzle EventSystem>>
+    // <<wait 1>>
+    //<<jump KidnDog>> 
+ //-> Testing Option -Puzzle 2
+ //   <<FadeOut EventSystem>>
+ //   <<PackingView EventSystem>>
+ //   <<wait 1>>
+ //   <<TutorialPuzzle EventSystem>>
+ //   <<KidOrder EventSystem>>
+ //   <<Puzzle2 EventSystem>>
+//    <<jump Packing>> 
+//Break from testing area. --------------------
 <<ReaEnabled EventSystem>> //First time Rea is on screen. 
 <<ReaHappy EventSystem>>
 <i>Of course that familiar mess of blonde hair would sneak in today. </i>
@@ -106,7 +121,7 @@ Rea: And make it official, I want to be the first paying customer of your own sh
 <<PackingView EventSystem>>
 <<ReaOrder EventSystem>>
 <<wait 1>>
-<<jump TestingPacking>>
+<<jump Packing>>
 ===
 
 title: Day1Ignore
@@ -120,10 +135,10 @@ Rea: Okay sorry.
 <<FadeOut EventSystem>>
 <<PackingView EventSystem>>
 <<wait 1>>
-<<jump TestingPacking>>
+<<jump Packing>>
 ===
 
-title: TestingPacking
+title: Packing
 position: -242,69
 ---
 <<FadeIn EventSystem>>
@@ -184,7 +199,6 @@ position: -251,264
 <i> I hope she's right.</i>
  <<FadeOut EventSystem>>
 <<wait  2>>
-<<FadeIn EventSystem>>
 <<jump Day1Business>>
 ===
 
@@ -199,6 +213,7 @@ position: -10,271
 <<FadeIn EventSystem>>
 <<if $Rea_Angry > 1>>
 <<ReaAngry EventSystem>>
+    <<set $Rea_NoCake += 1>>
     Rea: Keep it. 
     Rea: I was just trying to help.
     Rea: Seems you can't even remember your best friend's order.
@@ -228,7 +243,6 @@ position: -10,271
 <<endif>>
 <<FadeOut EventSystem>>
 <<wait  2>>
-<<FadeIn EventSystem>>
 <<TutorialPuzzle EventSystem>>
 <<jump Day1Business>>
 ===
@@ -238,6 +252,7 @@ title: Day1Business
 position: -138,492
 ---
 // ---------------------------------------------------------Busy Starts---------------------------------------------
+<<FadeIn EventSystem>>
 <i>There's been a steady flow since Rea left.</i>
 <i>It's been good. A few familiar faces. This shop might just survive.</i>
 <i> I just need to tuck a few things...</i>
@@ -277,7 +292,7 @@ Baxter: ...
     <<BusyBagelOrder EventSystem>>
     <<wait 1>>
     <<Puzzle1 EventSystem>>
-    <<jump BusyPacking>>
+    <<jump Packing>>
 -> <i>Donuts?</i>
     <<FadeOut EventSystem>>
     <<PackingView EventSystem>>
@@ -285,7 +300,7 @@ Baxter: ...
     <<BusyBigTip EventSystem>>
     <<wait 1>>
     <<Puzzle1 EventSystem>>
-    <<jump BusyPacking>>
+    <<jump Packing>>
 -> <i>I should interrupt them to clarify what the order was.</i>
     Baxter: Sorry, could I-
     ???: Ugh. Say that again? 
@@ -295,7 +310,7 @@ Baxter: ...
     <<BusyNoOrder EventSystem>>
     <<wait 1>>
     <<Puzzle1 EventSystem>>
-    <<jump BusyPacking>>
+    <<jump Packing>>
 -> <i>I should wait until they give me full attention.</i>
     ???: ...Have Lars look into that...
     Baxter: ...
@@ -316,12 +331,7 @@ Baxter: ...
     <<BusyOrder EventSystem>>
     <<wait 1>>
     <<Puzzle1 EventSystem>>
-    <<jump BusyPacking>>
-===
-title: BusyPacking
-position: -130,684
----
-<<FadeIn EventSystem>>
+    <<jump Packing>>
 ===
 title: BusyTooBusy
 position: 104,683
@@ -350,9 +360,11 @@ position: -189,849
 Baxter: That... was something.
 <i>At least they might come back?</i> 
 <i>Donuts... honestly I wish my old boss made us donuts.</i> 
+<<set $BusCard = true>>
 <<FadeOut EventSystem>>
+<<Puzzle1Remove EventSystem>>
 <<wait 1>>
-<<jump EndofDay1>>
+<<jump KidnDog>>
 ===
 
 title: BusyIncorrectOrder
@@ -380,9 +392,102 @@ position: 39,853
 <<FadeIn EventSystem>>
 Baxter: Well that was... something. 
 <i>I wish they would have just stopped for a moment to tell me what they wanted.</i> 
-<i>I'll do better with the next one.</i> 
+<i>I'll do better with the next customer.</i> 
+<<set $BusCard = false>>
 <<FadeOut EventSystem>>
+<<Puzzle1Remove EventSystem>>
 <<wait 1>>
+<<jump KidnDog>>
+===
+title: KidnDog
+---
+// ---------------------------------------------------------Kid & Dog Starts---------------------------------------------
+<<DoorSound EventSystem>>
+<<FadeIn EventSystem>>
+<<wait 1>>
+<i> Umm I swore I heard the door. </i>
+<<KidEnabled EventSystem>>
+Kid: Mister baker?
+Baxter: Hey, name's Baxter.
+Baxter: What's yours? And who's your friend?
+Kid: I'm not allowed to tell strangers my name.
+<<KidTail EventSystem>>
+Kid: But this is Buddy! 
+Baxter: Well nice to meet you and Buddy. 
+<<KidEnabled EventSystem>>
+Baxter: How can I help the two of you? 
+<<if $Rea_NoCake > 0>> 
+    Kid: There was this lady talking to herself about cupcakes. 
+    Kid: We wanted to find it to see why she seemed so upset. 
+    Kid: Do you make cupcakes that make people cry? 
+    Baxter: I do make cupcakes but they don't make people cry...
+    Kid: Hmm I think we need to try one to see if that's true.
+    <<KidTail EventSystem>> 
+<<else>>
+    Kid: Well there was this lady eating a cupcake earlier. 
+    Kid: We spent <b>all day</b> looking for it. 
+    <<KidTail EventSystem>>
+    Kid: Buddy are those the same ones? 
+    Buddy: Bork! Bork! 
+    Kid: Buddy says so.
+<<endif>>
+Kid: One vanilla cupcake for Buddy. 
+<<KidEnabled EventSystem>>
+Kid: One chocolate one for me. 
+Kid: Two moon looking bread things for our parents. 
+Baxter: Croissant? 
+Kid: Yeah. Those things. 
+<<KidTail EventSystem>>
+Kid: Buddy's and mine can't touch.
+Kid: Dogs can't have chocolate mister. 
+<<FadeOut EventSystem>>
+    <<PackingView EventSystem>>
+    <<KidOrder EventSystem>>
+    <<wait 1>>
+    <<Puzzle2 EventSystem>>
+    <<jump Packing>>
+
+===
+title: KidCorrection
+---
+Kid: Mister, don't let the chocolate touch Buddy's snack. 
+===
+title: KidCorrectOrder
+---
+<<FadeOut EventSystem>>
+<<CustomerView EventSystem>>
+<<wait 1>>
+<<KidTail EventSystem>>
+<<FadeIn EventSystem>>
+Kid: Thanks mister! 
+Buddy: Bork! 
+<i> What should I say?<i>
+-> "You are most welcome."
+-> "Not sure cupcakes are best for dogs."
+-> "Please leave Buddy outside next time."
+Kid: Cupcakeeeeees! 
+<<FadeOut EventSystem>>
+<<DoorSound EventSystem>>
+<<wait 2>>
+<<KidHide EventSystem>>
+<<jump EndofDay1>>
+===
+title: KidIncorrectOrder
+--- 
+<<FadeOut EventSystem>>
+<<CustomerView EventSystem>>
+<<wait 1>>
+<<KidTail EventSystem>>
+<<FadeIn EventSystem>>
+Kid: Look Buddy! We got them! 
+Kid: Oh.. umm. I see chocolate on yours...
+<<KidEnabled EventSystem>>
+Kid: Noooo!!! 
+Kid: Day ruined.  
+<<FadeOut EventSystem>>
+<<DoorSound EventSystem>>
+<<wait 2>>
+<<KidHide EventSystem>>
 <<jump EndofDay1>>
 ===
 title: EndofDay1
@@ -400,15 +505,27 @@ Baxter: Yeah. Pretty successful grand opening.
 <i>It was a busy day. What should I tell her about?</i> 
 -> "Some person wouldn't get off their phone."
     Baxter: Yeah. I know. It was a bit frustrating. 
-    //add more in maybe about business card vs not 
+    <<if $BusCard == true>>
+    Baxter: Sounded like they might be back so hopefully that goes better. 
+    <<else>>
+    Baxter: Yeah I hope I don't see them again. 
+    Baxter: Just pause the conversation or don't show up until your done your call. 
+    <<endif>>
 -> "Only a few strawberry cupcakes left."
+    <<if $Rea_NoCake > 0>> 
+    Baxter: I'll bring you one to make up for my mistake earlier. 
+    <<else>>
     Baxter: Ha, they will keep till tomorrow. 
-    Baxter: You're welcome to come pay for another... 
+    Baxter: You're welcome to come pay for another...
+    Baxter: Fine fine, I'll bring you another. 
+    <<endif>>
+    Baxter: A kid and their dog that came in because of you. 
+    Baxter: Nah they didn't take any strawberry ones. 
+    Baxter: Sure. I'll pack another one up. 
 -> "Thanks for coming by earlier."
     <<if $Rea_Angry  > 1>> 
      Baxter: I'm sorry for how I treated you. 
      Baxter: I know you were trying to help. 
-     Baxter: I shouldn't have lashed out like that. 
     <<else>> 
      Baxter: It helped. 
      Baxter: I wouldn't say no to a regular every morning... 
@@ -418,7 +535,7 @@ Baxter: Yeah everything is closed up for the day.
 Baxter: A bit of prep for tomorrow then yeah I'll come over.
 Baxter: Mmhm. See you soon. 
 <<FadeOut EventSystem>>
-<<wait 1>>
+<<wait 2>>
 <<MainMenu EventSystem>>
 //Add in something to fade out music so it can restart in the main menu
 ===

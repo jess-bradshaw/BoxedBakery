@@ -47,21 +47,39 @@ public class YarnCollection : MonoBehaviour
         public GameObject BackupDonuts; 
         public bool BusyNoOrder; 
     //Lars
-        public bool Lars; 
+        public bool Lars;
+    //Kid & Dog 
+        public GameObject KidVisual; 
+        public GameObject KidTailVisual; 
+        public GameObject KidOrder;   
+        public bool KidEnabled;
+        public bool KidTail;
+        public bool KidHide;
 //Tipping
-    public bool ReaTip; 
-    public bool Tip; 
-    public bool ReaBigTip; 
-    public bool BigTip; 
-      public bool BusyTip; 
-    public bool BTip; 
-    public bool BusyBigTip; 
-    public bool BBigTip; 
+    //Rea
+        public bool ReaTip; 
+        public bool Tip; 
+        public bool ReaBigTip; 
+        public bool BigTip; 
+    //Busy 
+        public bool BusyTip; 
+        public bool BTip; 
+        public bool BusyBigTip; 
+        public bool BBigTip; 
+    // Kid 
+        public bool KidTip;
+        public bool KTip; 
+        public bool KidBigTip;
+        public bool KBigTip; 
 //Puzzles
     public GameObject TutorialPuzzle; 
     public bool TutorialP;
     public GameObject Puzzle1; 
     public bool P1;
+    public bool Puzzle1R; 
+    public GameObject Puzzle2; 
+    public bool P2;
+//Other 
     public GameObject Day1End; 
     public bool DoorSound; 
     public bool PhoneSound; 
@@ -104,14 +122,23 @@ public class YarnCollection : MonoBehaviour
         variableStorage.SetValue("$BusyNoOrder", BusyNoOrder);
         //Lars 
         variableStorage.SetValue("$Lars", Lars);
+        // Kid & Dog 
+        variableStorage.SetValue("$KidEnabled", KidEnabled);
+        variableStorage.SetValue("$KidTail", KidTail);
+        variableStorage.SetValue("$KidHide", KidHide);
         //tipping
         variableStorage.SetValue("$ReaTip", ReaTip);
         variableStorage.SetValue("$ReaBigTip", ReaBigTip);
         variableStorage.SetValue("$BusyTip", BusyTip);
         variableStorage.SetValue("$BusyBigTip", BusyBigTip);
+        variableStorage.SetValue("$KidTip", KidTip);
+        variableStorage.SetValue("$KidBigTip", KidBigTip);
         //puzzles
         variableStorage.SetValue("$TutorialPuzzle", TutorialP);
+        variableStorage.SetValue("$Puzzle1Remove", Puzzle1R);
         variableStorage.SetValue("$Puzzle1", P1);
+        variableStorage.SetValue("$Puzzle2", P2);
+        //Other 
         variableStorage.SetValue("$hideButton", hideButton); 
         variableStorage.SetValue("$Day1End", Day1End); 
         //sounds
@@ -143,6 +170,7 @@ public class YarnCollection : MonoBehaviour
         BusyOrder.SetActive(false);
         BusyBagelOrder.SetActive(false);
         BusyDonutOrder.SetActive(false);
+        KidOrder.SetActive(false);
     }
     
 //Fades Commands 
@@ -261,9 +289,35 @@ public class YarnCollection : MonoBehaviour
     
     [YarnCommand("BusyBigTip")]
     public void BusyTippedBig(){BBigTip = true;}
-
+//Lars 
     [YarnCommand("Lars")]
     public void LarsTriggered(){Lars = true;}
+//Kid & Dog Character Commands 
+    [YarnCommand("KidEnabled")]
+    public void EnableKid(){
+        KidVisual.SetActive(true);
+        KidTailVisual.SetActive(false);
+    }
+    [YarnCommand("KidTail")]
+    public void EnableKidTail(){
+        KidVisual.SetActive(false);
+        KidTailVisual.SetActive(true);
+        Debug.Log("Tail wags"); 
+    }
+    [YarnCommand("KidHide")]
+    public void HideKid(){
+        KidVisual.SetActive(false);
+        KidTailVisual.SetActive(false);}
+    
+    [YarnCommand("KidOrder")]
+    public void DisplayKidOrder(){
+        KidOrder.SetActive(true);} 
+
+    [YarnCommand("KidTip")]
+    public void KidTipped(){KTip = true; }
+    
+    [YarnCommand("KidBigTip")]
+    public void KidTippedBig(){KBigTip = true;}
 //Puzzle Commands 
     [YarnCommand("TutorialPuzzle")]
     public void DisablePuzzleT()
@@ -274,6 +328,16 @@ public class YarnCollection : MonoBehaviour
     public void EnablePuzzle1()
     {
         Puzzle1.SetActive(true);
+    }
+    [YarnCommand("Puzzle1Remove")]
+    public void DisablePuzzle1()
+    {
+       Puzzle1.SetActive(false); 
+    }
+    [YarnCommand("Puzzle2")]
+    public void EnablePuzzle2()
+    {
+        Puzzle2.SetActive(true);
     }
     [YarnCommand("Day1End")]
      public void EnableDay1End()

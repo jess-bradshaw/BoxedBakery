@@ -86,7 +86,6 @@ public class PuzzleOne : MonoBehaviour
              if (storyVars.Lars== true) //checks if the person was super nice and tipped even more. 
             { 
                 fishMoney.SetActive(true);  
-                Debug.Log("FIIIIISH"); 
             }
             PackedCheck1 = true; 
             Lids();  
@@ -106,7 +105,6 @@ public class PuzzleOne : MonoBehaviour
                 if (storyVars.Lars== true) //checks if the person was super nice and tipped even more. 
                 { 
                     fishMoney.SetActive(true);  
-                    Debug.Log("FIIIIISH2"); 
                 }
                 Lids();   
                 PackedCheck1 = true; 

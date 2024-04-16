@@ -5,9 +5,9 @@ using Yarn.Unity;
 
 public class PuzzleTwo : MonoBehaviour
 {
-   [SerializeField] private string BusyTooBusy;
-   [SerializeField] private string BusyCorrectOrder;
-   [SerializeField] private string BusyIncorrectOrder;
+  [SerializeField] private string KidCorrection;
+    [SerializeField] private string KidCorrectOrder;
+    [SerializeField] private string KidIncorrectOrder;
    
     //Puzzle Variables 
         //Spots
@@ -27,21 +27,23 @@ public class PuzzleTwo : MonoBehaviour
             public string itemBottomRight; 
         //Checks
             public bool itemsChecked; 
-            public bool PackedCheck1; 
-     
+            public bool PackedCheck;
+            public YarnCollection dialogue;
+
     //Player Feedback
-        public GameObject Coins; 
-        public GameObject LidOpen; 
-        public GameObject LidClosed;
-        public DialogueRunner dialogueRunner;
-        public GameObject continueButton;
-        public YarnCollection storyVars;
+    public GameObject Coins; 
+    public GameObject LidOpen; 
+    public GameObject LidClosed;
+    public DialogueRunner dialogueRunner;
+    public GameObject continueButton;
+    public YarnCollection storyVars;
 //Money
- 
+    public GameObject tip;
+    public GameObject bigTip; 
     void Start()
    {
     itemsChecked = false; 
-    PackedCheck1 = false; 
+    PackedCheck = false; 
    }
     
     
@@ -53,9 +55,12 @@ public class PuzzleTwo : MonoBehaviour
             itemBottomLeft = filledBottomLeft.item;
             itemTopRight = filledTopRight.item;
             itemBottomRight = filledBottomRight.item;
-            if(PackedCheck1 == false)
+            if(PackedCheck == false)
             {
-            continueButton.SetActive(true);
+                if (dialogue.hideButton == false)
+                {
+                    continueButton.SetActive(true);
+                }
             }
         }
         else
@@ -66,26 +71,40 @@ public class PuzzleTwo : MonoBehaviour
 
     public void checkIfItemisValid()
     {
-        if(itemTopLeft == "donut" && itemBottomLeft == "donut" && itemTopRight == "donut" && itemBottomRight == "donut") 
+        if((itemTopLeft == "Chocolate" && itemBottomLeft == "NonChocolate" && itemTopRight == "NonChocolate" && itemBottomRight == "AvoidChocolate") || 
+            (itemTopLeft == "NonChocolate" && itemBottomLeft == "Chocolate" && itemTopRight == "AvoidChocolate" && itemBottomRight == "NonChocolate") ||
+            (itemTopLeft == "NonChocolate" && itemBottomLeft == "AvoidChocolate" && itemTopRight == "Chocolate" && itemBottomRight == "NonChocolate") || 
+            (itemTopLeft == "AvoidChocolate" && itemBottomLeft == "NonChocolate" && itemTopRight == "NonChocolate" && itemBottomRight == "Chocolate")) 
         { 
-            PackedCheck1 = true; 
+             if (storyVars.KidTip== true) //Checks if the person was tipped or not. 
+            { 
+                tip.SetActive(true); 
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.CoinTipped, this.transform.position); 
+            }
+            if (storyVars.KidBigTip== true) //checks if the person was super nice and tipped even more. 
+            { 
+                bigTip.SetActive(true);  
+            }
+            PackedCheck = true; 
             Lids();  
-            dialogueRunner.StartDialogue(BusyCorrectOrder);
+            dialogueRunner.StartDialogue(KidCorrectOrder);
         }
         else 
         {
+             
             if(itemsChecked == false)
             {
-                dialogueRunner.StartDialogue(BusyTooBusy); 
+                dialogueRunner.StartDialogue(KidCorrection); 
                 itemsChecked = true;
                 continueButton.SetActive(false); 
             }
             else 
             {
                 Lids();   
-                PackedCheck1 = true; 
-                dialogueRunner.StartDialogue(BusyIncorrectOrder);
+                PackedCheck = true; 
+                dialogueRunner.StartDialogue(KidIncorrectOrder);
             }
+            
         }
     }
      public void Lids()
