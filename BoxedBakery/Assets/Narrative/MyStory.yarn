@@ -190,13 +190,13 @@ position: -251,264
     Rea: Course, later! 
     //Track that Rea calls him. 
 <<endif>>
- <<FadeOut EventSystem>>
+<<FadeOut EventSystem>>
 <<DoorSound EventSystem>>
 <<ReaHide EventSystem>>
 <<FadeIn EventSystem>>
 <<TutorialPuzzle EventSystem>>
 <i> That cupcake has no chance of surviving the trip to work.</i>
-<i> I hope she's right.</i>
+<i> I hope she's right about today.</i>
  <<FadeOut EventSystem>>
 <<wait  2>>
 <<jump Day1Business>>
@@ -239,15 +239,13 @@ position: -10,271
     <<ReaHide EventSystem>>
     <<wait 1>>
     <<FadeIn EventSystem>>
-    <i> Now what was I do before she came in?</i> 
+    <i> Now what was I doing before she came in?</i> 
 <<endif>>
 <<FadeOut EventSystem>>
 <<wait  2>>
 <<TutorialPuzzle EventSystem>>
 <<jump Day1Business>>
 ===
-
-
 title: Day1Business
 position: -138,492
 ---
@@ -495,44 +493,66 @@ position: -163,1097
 ---
 <<Day1End EventSystem>>
 <<FadeIn EventSystem>>
+// -------------------------------------End of day 1 --------------------
 <i>Door locked just need to pack up anything that won't keep till tomorrow.</i> 
 //Check if rea is going to call or you call rea 
 <i>I should give Rea an update.</i>
 <<PhoneSound EventSystem>>
 <<wait 2>>
 Baxter: Rea? 
-Baxter: Yeah. Pretty successful grand opening. 
-<i>It was a busy day. What should I tell her about?</i> 
+Rea: Hey Bax how did it go? 
+Baxter: Pretty successful grand opening. 
+Rea: That's great to hear, I knew you would do well!
+<i>It was a busy day. What should I tell her?</i> 
 -> "Some person wouldn't get off their phone."
-    Baxter: Yeah. I know. It was a bit frustrating. 
+    Rea: Well that's rude. 
+    Baxter: Yeah. I know. It was a bit frustrating.
     <<if $BusCard == true>>
     Baxter: Sounded like they might be back so hopefully that goes better. 
+    Rea: Yeah... hopefully! 
     <<else>>
     Baxter: Yeah I hope I don't see them again. 
+    Rea: Seriously, like who does that?
     Baxter: Just pause the conversation or don't show up until your done your call. 
+    Rea: Exactly, it's not hard to do. 
     <<endif>>
 -> "Only a few strawberry cupcakes left."
     <<if $Rea_NoCake > 0>> 
+    Rea: Oh... yeah?
     Baxter: I'll bring you one to make up for my mistake earlier. 
+    Rea: Aww thanks Bax. It's okay, you were under a lot of pressure. 
     <<else>>
+    Rea: I want all of them. 
     Baxter: Ha, they will keep till tomorrow. 
     Baxter: You're welcome to come pay for another...
+    Rea: What?! I have to pay any time I want one now?
     Baxter: Fine fine, I'll bring you another. 
     <<endif>>
-    Baxter: A kid and their dog that came in because of you. 
+    Baxter: A kid and their dog that came in because of you.
+    Rea: How many strawberry did they take?  
     Baxter: Nah they didn't take any strawberry ones. 
-    Baxter: Sure. I'll pack another one up. 
+    Rea: Does this mean I get two since I brought in business?
+    Baxter: Ha. Sure Rea. I'll pack another one up. 
 -> "Thanks for coming by earlier."
     <<if $Rea_Angry  > 1>> 
+     Rea: Of course.
      Baxter: I'm sorry for how I treated you. 
      Baxter: I know you were trying to help. 
+     Rea: Awe, it's okay. I could tell something was off. 
     <<else>> 
+     Rea: I wouldn't have missed it. 
      Baxter: It helped. 
+     Rea: Oh yeah? 
      Baxter: I wouldn't say no to a regular every morning... 
+     Rea: That sounds expensive.. 
      Baxter: Haha okay fine, a few freebies here and there. 
+     Rea: Deal.
     <<endif>>
-Baxter: Yeah everything is closed up for the day. 
-Baxter: A bit of prep for tomorrow then yeah I'll come over.
+Rea: You coming over for dinner? 
+Baxter: Sure just closing up for the day. 
+Baxter: A bit of prep for tomorrow then I'll head over.
+Rea: Perfect, I'll have a drink waiting for you. 
+Rea: Successful first day!  
 Baxter: Mmhm. See you soon. 
 <<FadeOut EventSystem>>
 <<wait 2>>
