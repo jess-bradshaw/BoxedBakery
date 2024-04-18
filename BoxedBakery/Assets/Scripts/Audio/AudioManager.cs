@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity; 
 using FMOD.Studio; 
-// code from: https://www.youtube.com/watch?v=rcBHIOjZDpk 
+// code from: https://www.youtube.com/watch?v=rcBHIOjZDpk & https://learn.unity.com/tutorial/implement-data-persistence-between-scenes
 public class AudioManager : MonoBehaviour
 {
   private List<EventInstance> eventInstances;

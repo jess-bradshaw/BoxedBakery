@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity; 
-// code from: https://www.youtube.com/watch?v=rcBHIOjZDpk 
+// code inspired from: https://www.youtube.com/watch?v=rcBHIOjZDpk 
 public class FMODEvents : MonoBehaviour
 {
    //SFX

@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// Code inspired by: https://www.youtube.com/watch?v=I17uqTxbWK0 & https://www.youtube.com/watch?v=FdxvTcHJiA8
 public class DragController : MonoBehaviour
 {
     public Draggable LastDragged => _lastDragged;
     private bool _isDragActive = false; 
     private Vector2 _screenPosition; 
     private Vector3 _worldPosition;
-    public float startPosX; //mouse position
-    public float startPosY; //mouse position
+    public float startPosX; //mouse position x
+    public float startPosY; //mouse position y
     private Draggable _lastDragged; 
-
-    //public Vector2 mousePos; 
     
     void Awake()
     {
@@ -22,8 +20,6 @@ public class DragController : MonoBehaviour
             Destroy(gameObject); //will delete extras 
         }
     }
-
-    // Update is called once per frame
     void Update()
     {
         //check to see if something is being dragged and the button is unpressed it will cause the object to be dropped. 
@@ -37,19 +33,15 @@ public class DragController : MonoBehaviour
        if (Input.GetMouseButton(0)) 
         {
             Vector2 mousePos = Input.mousePosition; //get location of current mouse position
-           // mousePos = Camera.main.ScreenToWorldPoint(mousePos); 
             _screenPosition = new Vector2(mousePos.x, mousePos.y); 
-            //_worldPosition = Camera.main.ScreenToWorldPoint(_screenPosition); 
-           // startPosX = mousePos.x - this.transform.localPosition.x; //set to current mouse position [caculate different between center of item to where was clicked]
-           // startPosY = mousePos.y - this.transform.localPosition.y; 
         }
         else 
         {
             return; 
         }
+       
        _worldPosition = Camera.main.ScreenToWorldPoint(_screenPosition); 
          
-
         if (_isDragActive)
         {
             Drag(); 
@@ -77,10 +69,7 @@ public class DragController : MonoBehaviour
 
     void Drag()
     {
-        //Vector3 mousePos = Input.mousePosition;
-        //mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         _lastDragged.transform.localPosition = new Vector3(_worldPosition.x - startPosX, _worldPosition.y - startPosY, -1);
-       // _lastDragged.transform.localPosition = new Vector2(mousePos.x - startPosX, mousePos.y - startPosY); 
     }
 
     void Drop()

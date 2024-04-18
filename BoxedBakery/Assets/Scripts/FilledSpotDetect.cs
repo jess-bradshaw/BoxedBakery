@@ -1,25 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// Code inspired by: https://www.youtube.com/watch?v=I17uqTxbWK0 & https://www.youtube.com/watch?v=FdxvTcHJiA8
 public class FilledSpotDetect : MonoBehaviour
 {
     public string item; 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnTriggerStay2D(Collider2D other)
     {
        this.tag = "DropInvalid"; 
        item = other.name; 
-}
+    }
 }

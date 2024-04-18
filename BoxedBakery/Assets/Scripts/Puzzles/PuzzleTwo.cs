@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity; 
-
+// Code roughly inspired by: https://www.youtube.com/watch?v=I17uqTxbWK0 & https://www.youtube.com/watch?v=FdxvTcHJiA8
 public class PuzzleTwo : MonoBehaviour
 {
   [SerializeField] private string KidCorrection;

@@ -1,20 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// Code inspired by: https://www.youtube.com/watch?v=I17uqTxbWK0 & https://www.youtube.com/watch?v=FdxvTcHJiA8
 public class Draggable : MonoBehaviour
 {
    public bool IsDragging;  
-
    public Vector3 LastPosition; 
-
    private Collider2D _collider; 
-   
    private DragController _dragController; 
-
    private float _movementTime = 15f; 
    private System.Nullable<Vector3> _movementDestination; 
-
 
    void Start()
    {
@@ -73,7 +68,6 @@ public class Draggable : MonoBehaviour
             other.tag = "DropInvalid"; 
         }
    }
-   
    
    void OnTriggerExit2D(Collider2D other)
    {

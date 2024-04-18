@@ -7,12 +7,6 @@ public class MoveCamera : MonoBehaviour
  public GameObject CustomerCamera;
  public GameObject PackingCamera;
 
-
- void Awake()
- {
-    
- }
-
     void customerAngle()
     {
         CustomerCamera.SetActive(true);

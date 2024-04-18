@@ -81,6 +81,8 @@ public class YarnCollection : MonoBehaviour
     public bool P2;
 //Other 
     public GameObject Day1End; 
+    public GameObject DayBackgroundCustomer; 
+    public GameObject Steam; 
     public bool DoorSound; 
     public bool PhoneSound; 
     public float audioLevel; 
@@ -343,6 +345,8 @@ public class YarnCollection : MonoBehaviour
      public void EnableDay1End()
     {
         Day1End.SetActive(true);
+        DayBackgroundCustomer.SetActive(false); 
+        Steam.SetActive(false); 
     }
 
     [YarnCommand("hideButton")]
